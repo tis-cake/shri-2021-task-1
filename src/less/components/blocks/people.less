@@ -1,0 +1,34 @@
+.people {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.people__emoji {
+  position: absolute;
+  z-index: 1;
+  top: -22px;
+}
+
+.people__img-wrap {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 6px;
+}
+
+.people__img {
+  .img-cover;
+  border-radius: 50%;
+  filter: grayscale(100%);
+}
+
+.people__name {
+  margin-bottom: 4px;
+}
+
+.people__commit-count {
+  color: @grey-light;
+}

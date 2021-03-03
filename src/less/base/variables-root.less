@@ -1,0 +1,51 @@
+:root {
+  // variables basis
+  --font-main: 'Roboto', 'Arial', sans-serif;
+  --font-size: 16px;
+  --line-height-gap: 2px;
+
+  // colors scheme toggle
+  --color-primary: var(--color-white);
+  --color-secondary: var(--color-grey);
+  --color-bg-main: var(--gradient-main);
+  --color-bg-stats-primary: var(--gradient-gold);
+  --color-bg-stats-secondary: var(--gradient-dark);
+  --shadow-stats-primary: var(--shadow-gold);
+  --shadow-stats-secondary: var(--shadow-dark);
+
+  // colors basic
+  --color-black: #261C00;
+  --color-white: #FCFBF7;
+  --color-grey:  #918F8A;
+  --color-grey-light: #BFBFBF;
+  --color-gold: #F4B000;
+  // gradients basic
+  --gradient-main: radial-gradient(70.24% 70.24% at 49.87% 29.76%, rgba(18, 12, 1, 0.9) 0%, #000000 100%);
+  --gradient-gold: radial-gradient(91.67% 122.17% at 69.17% -11.17%, #FFA300 0%, #2D1C00 100%);
+  --gradient-dark: linear-gradient(180deg, rgba(0, 0, 0, 0) -2.22%, rgba(0, 0, 0, 0.8) 100%), radial-gradient(149.08% 95.38% at 38.75% 71.48%, #000000 0%, #231900 0.01%, #4D4D4D 100%);
+  // shadows basic
+  --shadow-gold: inset -1px 1px 1px rgba(255, 255, 255, 0.4), inset 0px 6px 15px rgba(255, 162, 0, 0.4);
+  --shadow-dark: inset -1px 1px 1px rgba(255, 255, 255, 0.2), inset 2px 2px 16px rgba(103, 103, 103, 0.6);
+
+  --transition-main: 0.5s;
+}
+
+@font-size: var(--font-size);
+@font-main: var(--font-main);
+@get-line-height: calc(var(--font-size) + var(--line-height-gap));
+
+@color-primary: var(--color-primary);
+@color-secondary: var(--color-secondary);
+@bg-main: var(--color-bg-main);
+@bg-stats-primary: var(--color-bg-stats-primary);
+@bg-stats-secondary: var(--color-bg-stats-secondary);
+@shadow-stats-primary: var(--shadow-stats-primary);
+@shadow-stats-secondary: var(--shadow-stats-secondary);
+
+// @black: var(--color-black);
+// @white: var(--color-white);
+// @grey: var(--color-grey);
+@grey-light: var(--color-grey-light);
+// @gold: var(--color-gold);
+
+@s: var(--transition-main);
