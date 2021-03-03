@@ -5,7 +5,6 @@
   flex-direction: column;
 
   min-height: 100vh;
-  // height: 100%;
   padding-top: 20px;
 }
 
@@ -16,4 +15,10 @@
 .board__subtitle {
   font-weight: 500;
   color: @color-secondary;
+}
+
+@media only screen and (min-width: @tablet-small) {
+  .board {
+    text-align: center;
+  }
 }

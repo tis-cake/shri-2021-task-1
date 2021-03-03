@@ -7,7 +7,7 @@
   <title>Stories</title>
   <!-- <link rel="preload" href="fonts/.woff2" as="font" type="font/woff2" crossorigin=""> -->
 </head>
-<body>
+<body class="theme_dark">
   <main class="main">
     <div class="board container">
       <h1 class="board__title title">
@@ -123,9 +123,81 @@
               </span>
             </p>
           </li>
+          <li class="leaders__item leaders__item--4 people">
+            <span class="people__emoji emoji"></span>
+            <span class="people__img-wrap">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="assets/images/1x/6.webp 1x,
+                          assets/images/2x/6.webp 2x,
+                          assets/images/3x/6.webp 3x,
+                          assets/images/4x/6.webp 4x"
+                >
+
+                <img
+                  class="people__img"
+                  src="assets/images/1x/1.jpg"
+                  srcset="assets/images/2x/6.jpg 2x,
+                          assets/images/3x/6.jpg 3x,
+                          assets/images/4x/6.jpg 4x,"
+                  alt="Изображение лидера №4"
+                >
+              </picture>
+            </span>
+            <span class="people__name">
+              Андрей Мокроусов
+            </span>
+            <span class="people__commit-count caption">
+              20
+            </span>
+            <p class="leaders__stats">
+              <span class="leaders__stats-value title">
+                4
+              </span>
+            </p>
+          </li>
+          <li class="leaders__item leaders__item--5 people">
+            <span class="people__emoji emoji">👍</span>
+            <span class="people__img-wrap">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="assets/images/1x/8.webp 1x,
+                          assets/images/2x/8.webp 2x,
+                          assets/images/3x/8.webp 3x,
+                          assets/images/4x/8.webp 4x"
+                >
+
+                <img
+                  class="people__img"
+                  src="assets/images/1x/1.jpg"
+                  srcset="assets/images/2x/8.jpg 2x,
+                          assets/images/3x/8.jpg 3x,
+                          assets/images/4x/8.jpg 4x,"
+                  alt="Изображение лидера №5"
+                >
+              </picture>
+            </span>
+            <span class="people__name">
+              Александр Иванков
+            </span>
+            <span class="people__commit-count caption">
+              19
+            </span>
+            <p class="leaders__stats">
+              <span class="leaders__stats-value title">
+                5
+              </span>
+            </p>
+          </li>
         </ul>
       </section>
     </div>
   </main>
+
+  <button class="colors-theme-toggle" title="Dark/Light theme toggler">
+    Dark/Light theme toggler
+  </button>
 </body>
 </html>

@@ -1,3 +1,17 @@
+html {
+  --font-main: 'Roboto', 'Arial', sans-serif;
+  --font-size: 16px;
+  --line-height-gap: 2px;
+
+  --transition-main: 0.5s;
+}
+
+@font-size: var(--font-size);
+@font-main: var(--font-main);
+@get-line-height: calc(var(--font-size) + var(--line-height-gap));
+
+@s: var(--transition-main);
+
 // вертикальная и горизонтальная
 // 320 × 568,
 // 414 × 736,
