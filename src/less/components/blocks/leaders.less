@@ -1,5 +1,8 @@
 .leaders {
-  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  margin-top: 60px;
 }
 
 .leaders__title {}
@@ -10,19 +13,20 @@
   grid-template-areas: 'third first second';
 
   justify-content: center;
+  align-items: stretch;
   padding-top: 20px;
-  align-items: end;
 }
 
 .leaders__item {
+  --stats-height-gap: 50px;
   --gap-secondary: 16px;
 
   position: relative;
   width: 112px;
+  margin-top: calc(var(--stats-height-gap) * var(--stats-coefficient));
 
   &--1 {
-    --stats-coefficient: 2;
-
+    --stats-coefficient: 0;
     grid-area: first;
     z-index: 10;
 
@@ -39,7 +43,6 @@
 
   &--2,
   &--4 {
-    --stats-coefficient: 1;
     left: calc(-1 * var(--gap-secondary));
     span {
       padding-left: var(--gap-secondary);
@@ -48,7 +51,6 @@
 
   &--3,
   &--5 {
-    --stats-coefficient: 0;
     span {
       padding-right: var(--gap-secondary);
     }
@@ -61,10 +63,12 @@
   }
 
   &--2 {
+    --stats-coefficient: 1;
     grid-area: second;
   }
 
   &--3 {
+    --stats-coefficient: 2;
     grid-area: third;
   }
 
@@ -78,12 +82,9 @@
 }
 
 .leaders__stats {
-  --stats-height: 150px;
-  --stats-height-gap: 50px;
-
   box-sizing: border-box;
   width: 100%;
-  height: calc(var(--stats-height) + (var(--stats-height-gap) * var(--stats-coefficient)));
+  height: 100%;
   margin-top: 16px;
   padding-top: 18px;
 
@@ -94,29 +95,29 @@
 
 .leaders__stats-value {}
 
-@media only screen and (min-width: @phone-small) {
+@media only screen and (min-width: @width-phone-small) {
   .leaders__list {
     grid-template-columns: 104px 120px 104px;
+    padding-top: 30px;
   }
 
   .leaders__item {
-    --gap-secondary: 16px;
     width: 120px;
-  }
-
-  .leaders__stats {
-    --stats-height: 225px;
-    --stats-height-gap: 50px;
   }
 }
 
-@media only screen and (min-width: @tablet-small) {
+@media only screen and (min-width: @width-tablet-small) {
+  .leaders {
+    margin-top: 18px;
+  }
+
   .leaders__list {
     grid-template-columns: 104px 104px 120px 104px 104px;
     grid-template-areas: 'fifth third first second fourth';
   }
 
   .leaders__item {
+    --stats-height-gap: 20px;
     &--3 {
       --stats-coefficient: 1;
     }
@@ -124,7 +125,7 @@
     &--4,
     &--5 {
       display: flex;
-      --stats-coefficient: 0;
+      --stats-coefficient: 2;
     }
   }
 
