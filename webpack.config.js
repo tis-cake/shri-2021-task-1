@@ -3,7 +3,7 @@ const path = require('path');
 
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
@@ -94,7 +94,6 @@ module.exports = {
     port: 8080,
     open: true,
     writeToDisk: isProd,
-    // hot: isDev,
   },
   plugins: [
     // ...pagesHTML,
@@ -107,13 +106,17 @@ module.exports = {
       filename: filename('css'),
     }),
     new WebpackNotifierPlugin(),
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
         {
           from: path.resolve(__dirname, 'src/assets/images'),
           to: path.resolve(__dirname, 'build/assets/images'),
         },
+        // {
+        //   from: path.resolve(__dirname, 'src/assets/sprite.svg'),
+        //   to: path.resolve(__dirname, 'build/assets/sprite.svg'),
+        // },
       ],
     }),
   ],

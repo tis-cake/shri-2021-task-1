@@ -3,9 +3,9 @@
   "scripts": {
     "test": "npm run eslint",
     "lint": "eslint src/**/*.js --color",
-    "dev": "cross-env NODE_ENV=development webpack serve",
-    "build": "cross-env NODE_ENV=production webpack",
-    "start": "cross-env NODE_ENV=production webpack serve",
+    "dev": "del-cli build && cross-env NODE_ENV=development webpack serve",
+    "build": "del-cli build && cross-env NODE_ENV=production webpack",
+    "start": "del-cli build && cross-env NODE_ENV=production webpack serve",
     "stats": "webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json"
   },
   "devDependencies": {
@@ -19,6 +19,7 @@
     "cross-env": "^7.0.3",
     "css-loader": "^5.1.0",
     "css-minimizer-webpack-plugin": "^1.2.0",
+    "del-cli": "^3.0.1",
     "eslint": "^7.20.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-html": "^6.1.1",
@@ -31,6 +32,7 @@
     "npm": "^7.6.0",
     "postcss": "^8.2.6",
     "postcss-loader": "^4.2.0",
+    "swiper": "^6.4.15",
     "terser-webpack-plugin": "^4.2.3",
     "webpack": "^4.44.2",
     "webpack-bundle-analyzer": "^4.4.0",

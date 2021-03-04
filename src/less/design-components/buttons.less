@@ -1,0 +1,29 @@
+.button {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+
+
+  color: @button-primary;
+  transition-duration: @s;
+
+  &:hover,
+  &:focus {
+    color: @button-secondary;
+  }
+
+  &--prev,
+  &--next {
+    &.swiper-button-disabled {
+      opacity: 1;
+      color: @button-secondary;
+    }
+  }
+
+  &--prev {
+    transform: rotate(180deg);
+  }
+
+  &--next {}
+}

@@ -7,8 +7,12 @@ html {
   --color-bg-main-gradient: var(--gradient-main);
   --color-bg-stats-primary: var(--gradient-gold);
   --color-bg-stats-secondary: var(--gradient-dark);
+  --color-bg-stats-tertiary: var(--gradient-dark-light);
   --shadow-stats-primary: var(--shadow-gold);
   --shadow-stats-secondary: var(--shadow-dark);
+  --shadow-stats-tertiary: var(--shadow-dark-light);
+  --color-button-primary: var(--color-white-light);
+  --color-button-secondary: var(--color-grey);
 
   // colors basic
   --color-black: #000000;
@@ -17,7 +21,7 @@ html {
   --color-white-light: #FCFBF7;
   --color-grey:  #918F8A;
   --color-grey-light: #BFBFBF;
-  --color-gold: #F4B000;
+  --color-yellow: #F4B000;
   // gradients basic
   --gradient-none: none;
   --gradient-main: radial-gradient(70.24% 70.24% at 49.87% 29.76%, rgba(18, 12, 1, 0.9) 0%, #000000 100%);
@@ -25,11 +29,13 @@ html {
   --gradient-dark: linear-gradient(180deg, rgba(0, 0, 0, 0) -2.22%, rgba(0, 0, 0, 0.8) 100%), radial-gradient(149.08% 95.38% at 38.75% 71.48%, #000000 0%, #231900 0.01%, #4D4D4D 100%);
   --gradient-gold-light: linear-gradient(180deg, #FFF2D1 0.82%, #FFD66C 100%);
   --gradient-white-light: linear-gradient(180deg, rgba(244, 244, 244, 0.9) 0.82%, #E9E9E9 100%, rgba(234, 234, 234, 0) 100%);
+  --gradient-dark-light: radial-gradient(85.62% 148.33% at 49.85% 100%, rgba(68, 58, 42, 0.7864) 0%, rgba(0, 0, 0, 0.8) 100%);
   // shadows basic
   --shadow-gold: inset -1px 1px 1px rgba(255, 255, 255, 0.4), inset 0px 6px 15px rgba(255, 162, 0, 0.4);
   --shadow-dark: inset -1px 1px 1px rgba(255, 255, 255, 0.2), inset 2px 2px 16px rgba(103, 103, 103, 0.6);
   --shadow-gold-light: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.8);
   --shadow-white-light: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(207, 207, 207, 0.5);
+  --shadow-dark-light: inset -1px 1px 1px rgba(255, 255, 255, 0.2), inset 2px 2px 16px rgba(255, 255, 255, 0.1);
 }
 
 @color-primary: var(--color-primary);
@@ -38,14 +44,18 @@ html {
 @bg-main-gradient: var(--color-bg-main-gradient);
 @bg-stats-primary: var(--color-bg-stats-primary);
 @bg-stats-secondary: var(--color-bg-stats-secondary);
+@bg-stats-tertiary: var(--color-bg-stats-tertiary);
 @shadow-stats-primary: var(--shadow-stats-primary);
 @shadow-stats-secondary: var(--shadow-stats-secondary);
+@shadow-stats-tertiary: var(--shadow-stats-tertiary);
+@button-primary: var(--color-button-primary);
+@button-secondary: var(--color-button-secondary);
 
 // @black: var(--color-dark);
 // @white: var(--color-white-light);
 // @grey: var(--color-grey);
 @grey-light: var(--color-grey-light);
-// @gold: var(--color-gold);
+// @yellow: var(--color-yellow);
 
 .theme_light {
   --color-primary: var(--color-dark);
@@ -54,8 +64,12 @@ html {
   --color-bg-main-gradient: var(--gradient-none);
   --color-bg-stats-primary: var(--gradient-gold-light);
   --color-bg-stats-secondary: var(--gradient-white-light);
+  --color-bg-stats-tertiary: var(--gradient-white-light);
   --shadow-stats-primary: var(--shadow-gold-light);
   --shadow-stats-secondary: var(--shadow-white-light);
+  --shadow-stats-tertiary: var(--shadow-white-light);
+  --color-button-primary: var(--color-yellow);
+  --color-button-secondary: var(--color-grey-light);
 
   .people__img {
     filter: none;
