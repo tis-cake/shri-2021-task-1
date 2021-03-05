@@ -90,12 +90,12 @@
 
   background-image: @bg-stats-secondary;
   box-shadow: @shadow-stats-secondary;
-  border-radius: 6px 6px 0 0;
+  border-radius: @radius @radius 0 0;
 }
 
 .leaders__stats-value {}
 
-@media only screen and (min-width: @width-phone-small) {
+@media only screen and (min-width: @width-phone-middle) {
   .leaders__list {
     grid-template-columns: 104px 120px 104px;
     padding-top: 30px;

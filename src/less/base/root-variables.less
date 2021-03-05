@@ -1,15 +1,22 @@
 html {
   --font-main: 'Roboto', 'Arial', sans-serif;
-  --font-size: 16px;
+  --font-size: 14px;
   --line-height-gap: 2px;
+  --border-radius: 6px;
 
   --transition-main: 0.5s;
+}
+
+@media only screen and (min-width: @width-phone-middle) {
+  html {
+    --font-size: 16px;
+  }
 }
 
 @font-size: var(--font-size);
 @font-main: var(--font-main);
 @get-line-height: calc(var(--font-size) + var(--line-height-gap));
-
+@radius: var(--border-radius);
 @s: var(--transition-main);
 
 // вертикальная и горизонтальная
@@ -20,13 +27,11 @@ html {
 // 1366 × 768,
 // 1920 × 1080
 
-@width-phone-small: 375px;
+// @width-phone-small: 320px;
+@width-phone-middle: 375px;
 @width-tablet-small: 567px;
-// @width-tablet-small: 667px;
-@width-tablet: 767px;
-
-// @desktop-width: 1690px;
-// @max-desktop-width: 1921px;
+@width-tablet-middle: 667px;
+// @width-tablet: 767px;
 
 @retina-dpi: 144dpi;
 @retina-dppx: 1.5dppx;
