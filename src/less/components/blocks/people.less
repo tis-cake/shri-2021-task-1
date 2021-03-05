@@ -1,9 +1,12 @@
-.people,
-.people__link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+.people {
+  &,
+  &__link,
+  &__not-included-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 }
 
 .people {}
@@ -16,7 +19,6 @@
   position: absolute;
   z-index: 1;
   top: -24px;
-  // top: -22px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -40,9 +42,16 @@
 .people__name {
   padding-left: 10px;
   padding-right: 10px;
+  font-weight: 500;
 }
 
 .people__commit-count {
   margin-top: 4px;
   color: @grey-light;
+}
+
+.people__not-included-wrap {
+  .people__commit-count {
+    color: @color-quaternary;
+  }
 }
