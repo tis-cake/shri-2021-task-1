@@ -14,6 +14,8 @@
 //   },
 // });
 
+// export { voteSwiper };
+
 // Cамописный слайдер
 const sliderInit = (classBEM) => {
   const mainSection = document.querySelector(`.${classBEM}`);
@@ -66,6 +68,20 @@ const sliderInit = (classBEM) => {
     button.removeAttribute('disabled');
   };
 
+  const disabledTabindex = (slideIndexPrev) => {
+    const buttons = slides[slideIndexPrev].querySelectorAll('.people__link');
+    for (const button of buttons) {
+      button.setAttribute('tabindex', -1);
+    }
+  };
+
+  const activeTabindex = (slideIndexCurrent) => {
+    const buttons = slides[slideIndexCurrent].querySelectorAll('.people__link');
+    for (const button of buttons) {
+      button.setAttribute('tabindex', 0);
+    }
+  };
+
   disabledButton(buttonSlidePrev);
 
   // выходим, если слайд один
@@ -88,6 +104,7 @@ const sliderInit = (classBEM) => {
   };
 
   const onButtonSlidePrevClick = () => {
+    disabledTabindex(slideIndex);
     slideIndex--;
 
     slideTransitionSignPolarity = -1;
@@ -101,9 +118,11 @@ const sliderInit = (classBEM) => {
     }
 
     changeSlide();
+    activeTabindex(slideIndex);
   };
 
   const onButtonSlideNextClick = () => {
+    disabledTabindex(slideIndex);
     slideIndex++;
 
     slideTransitionSignPolarity = -1;
@@ -117,11 +136,11 @@ const sliderInit = (classBEM) => {
     }
 
     changeSlide();
+    activeTabindex(slideIndex);
   };
 
   buttonSlidePrev.addEventListener('click', onButtonSlidePrevClick);
   buttonSlideNext.addEventListener('click', onButtonSlideNextClick);
 };
 
-// export { voteSwiper };
 export { sliderInit };
