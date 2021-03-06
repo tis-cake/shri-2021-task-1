@@ -12,6 +12,10 @@
 .people {}
 
 .people__link {
+  height: 100%;
+  padding-top: 14px;
+  padding-bottom: 10px;
+
   color: inherit;
 }
 
@@ -53,5 +57,11 @@
 .people__not-included-wrap {
   .people__commit-count {
     color: @color-quaternary;
+  }
+}
+
+@media only screen and (min-width: @width-phone-middle) {
+  .people__link {
+    padding-top: 20px;
   }
 }

@@ -51,10 +51,10 @@ const sliderInit = (classBEM) => {
   document.addEventListener('DOMContentLoaded', () => {
     window.onresize = () => {
       swiperHeight = swiperContainer.offsetHeight;
-      slideTransitionSignPolarity = -1;
+      // slideTransitionSignPolarity = -1;
 
-      console.log(swiperWrapper.style.transform);
       setTranslateProperty();
+      console.log(swiperWrapper.style.transform);
     };
   });
 
@@ -107,7 +107,7 @@ const sliderInit = (classBEM) => {
     disabledTabindex(slideIndex);
     slideIndex--;
 
-    slideTransitionSignPolarity = -1;
+    // slideTransitionSignPolarity = -1;
 
     if (slideIndex === 0) {
       disabledButton(buttonSlidePrev);
@@ -125,7 +125,7 @@ const sliderInit = (classBEM) => {
     disabledTabindex(slideIndex);
     slideIndex++;
 
-    slideTransitionSignPolarity = -1;
+    // slideTransitionSignPolarity = -1;
 
     if (slideIndex === 1) {
       activeButton(buttonSlidePrev);
