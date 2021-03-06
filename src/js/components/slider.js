@@ -22,7 +22,6 @@ const sliderInit = (classBEM) => {
 
   // выходим, если элемент не найден
   if (!mainSection) {
-    // console.log('В переданном селекторе нет слайдера');
     // throw new Error('В переданном селекторе нет слайдера');
     return;
   }
@@ -38,105 +37,110 @@ const sliderInit = (classBEM) => {
   slides[0].classList.add(slideActiveClass);
 
   let slideIndex = 0;
-  let slideTransitionSignPolarity = -1;
   let swiperHeight = swiperContainer.offsetHeight;
+  // отрицательное значение прячет слайдер вверх
+  const slideTransitionSignPolarity = -1;
 
   const setTranslateProperty = () => {
     const translateProperty = `translateY(${slideTransitionSignPolarity * slideIndex * swiperHeight}px)`;
-    // const translateProperty = `translate3d(0px, ${slideTransitionSignPolarity * slideIndex * swiperHeight}px, 0px)`;
-
     swiperWrapper.style.transform = translateProperty;
   };
 
+  // отслеживаем ресайз окна
+  // !NB: debounce не добавляю, так как ресайз в
+  // инструментах разработчика не важен для пользователя
   document.addEventListener('DOMContentLoaded', () => {
     window.onresize = () => {
       swiperHeight = swiperContainer.offsetHeight;
-      // slideTransitionSignPolarity = -1;
 
       setTranslateProperty();
-      console.log(swiperWrapper.style.transform);
     };
   });
 
-  const disabledButton = (button) => {
+  // сценарии
+  const disableButton = (button) => {
     button.classList.add(buttonDisabledClass);
     button.setAttribute('disabled', true);
   };
 
-  const activeButton = (button) => {
+  const activateButton = (button) => {
     button.classList.remove(buttonDisabledClass);
     button.removeAttribute('disabled');
   };
 
-  const disabledTabindex = (slideIndexPrev) => {
+  const disableTabindex = (slideIndexPrev) => {
     const buttons = slides[slideIndexPrev].querySelectorAll('.people__link');
     for (const button of buttons) {
       button.setAttribute('tabindex', -1);
     }
   };
 
-  const activeTabindex = (slideIndexCurrent) => {
+  const activateTabindex = (slideIndexCurrent) => {
     const buttons = slides[slideIndexCurrent].querySelectorAll('.people__link');
     for (const button of buttons) {
       button.setAttribute('tabindex', 0);
     }
   };
 
-  disabledButton(buttonSlidePrev);
+  const removeActiveClass = (slideIndexPrev) => {
+    slides[slideIndexPrev].classList.remove(slideActiveClass);
+  };
+
+  const addActiveClass = (slideIndexCurrent) => {
+    slides[slideIndexCurrent].classList.add(slideActiveClass);
+  };
+
+  // группируем сценарии
+  const doBeforeIndexChange = () => {
+    disableTabindex(slideIndex);
+    removeActiveClass(slideIndex);
+  };
+
+  const doAfterIndexChange = () => {
+    setTranslateProperty();
+    activateTabindex(slideIndex);
+    addActiveClass(slideIndex);
+  };
+
+  disableButton(buttonSlidePrev);
 
   // выходим, если слайд один
   if (slides.length === 1) {
-    disabledButton(buttonSlideNext);
+    disableButton(buttonSlideNext);
 
     return;
   }
 
-  const changeSlide = () => {
-    // console.log(`${slideIndex} сейчас`);
-
-    setTranslateProperty();
-
-    for (const slide of slides) {
-      slide.classList.remove(slideActiveClass);
-    }
-
-    slides[slideIndex].classList.add(slideActiveClass);
-  };
-
   const onButtonSlidePrevClick = () => {
-    disabledTabindex(slideIndex);
+    doBeforeIndexChange();
+
     slideIndex--;
 
-    // slideTransitionSignPolarity = -1;
-
     if (slideIndex === 0) {
-      disabledButton(buttonSlidePrev);
+      disableButton(buttonSlidePrev);
     }
 
     if (slideIndex === slides.length - 2) {
-      activeButton(buttonSlideNext);
+      activateButton(buttonSlideNext);
     }
 
-    changeSlide();
-    activeTabindex(slideIndex);
+    doAfterIndexChange();
   };
 
   const onButtonSlideNextClick = () => {
-    disabledTabindex(slideIndex);
+    doBeforeIndexChange();
+
     slideIndex++;
 
-    // slideTransitionSignPolarity = -1;
-
     if (slideIndex === 1) {
-      activeButton(buttonSlidePrev);
+      activateButton(buttonSlidePrev);
     }
 
     if (slideIndex === slides.length - 1) {
-      disabledButton(buttonSlideNext);
+      disableButton(buttonSlideNext);
     }
 
-    changeSlide();
-    activeTabindex(slideIndex);
+    doAfterIndexChange();
   };
 
   buttonSlidePrev.addEventListener('click', onButtonSlidePrevClick);
