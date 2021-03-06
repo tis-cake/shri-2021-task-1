@@ -20,6 +20,8 @@
     'no-param-reassign': 'warn',
     'prefer-object-spread': ['warn'],
     'import/prefer-default-export': 'off',
+    "import/no-extraneous-dependencies": 'warn',
+    // "import/no-extraneous-dependencies": ['warn', {'devDependencies': true}],
     'object-curly-newline': ['error', {
       'multiline': true,
     }]

@@ -1,9 +1,10 @@
 .button {
   display: block;
+  overflow: hidden;
+
   width: 64px;
   height: 64px;
   border-radius: 50%;
-
 
   color: @button-primary;
   transition-duration: @s;
@@ -27,4 +28,14 @@
   }
 
   &--next {}
+
+  &--disabled {
+    color: @button-secondary;
+  }
+
+  &__icon {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 }

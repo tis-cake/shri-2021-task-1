@@ -342,7 +342,501 @@
           </h2>
         </div>
 
-        <div class="swiper-container vote__swiper-container" id="developer-swiper">
+        <!-- Самописный слайдер -->
+        <div class="vote__swiper-container" id="vote-swiper">
+          <div class="vote__swiper-wrapper">
+            <div class="vote__swiper-slide">
+              <ul class="vote__list">
+                <li class="vote__item people">
+                  <button class="people__link" tabindex="0">
+                    <span class="people__emoji emoji"></span>
+                    <span class="people__img-wrap">
+                      <picture>
+                        <source
+                          type="image/webp"
+                          srcset="assets/images/1x/1.webp 1x,
+                                  assets/images/2x/1.webp 2x,
+                                  assets/images/3x/1.webp 3x,
+                                  assets/images/4x/1.webp 4x"
+                        >
+
+                        <img
+                          class="people__img"
+                          src="assets/images/1x/1.jpg"
+                          srcset="assets/images/2x/1.jpg 2x,
+                                  assets/images/3x/1.jpg 3x,
+                                  assets/images/4x/1.jpg 4x"
+                          alt="Евгений Дементьев"
+                        >
+                      </picture>
+                    </span>
+                    <span class="people__name">
+                      Евгений Дементьев
+                    </span>
+                  </button>
+                </li>
+
+                <li class="vote__item vote__item--active people">
+                  <button class="people__link" tabindex="0">
+                    <span class="people__img-wrap">
+                      <span class="people__emoji emoji">👍</span>
+                      <picture>
+                        <source
+                          type="image/webp"
+                          srcset="assets/images/1x/4.webp 1x,
+                                  assets/images/2x/4.webp 2x,
+                                  assets/images/3x/4.webp 3x,
+                                  assets/images/4x/4.webp 4x"
+                        >
+
+                        <img
+                          class="people__img"
+                          src="assets/images/1x/4.jpg"
+                          srcset="assets/images/2x/4.jpg 2x,
+                                  assets/images/3x/4.jpg 3x,
+                                  assets/images/4x/4.jpg 4x"
+                          alt="Вадим Пацев"
+                        >
+                      </picture>
+                    </span>
+                    <span class="people__name">
+                      Вадим Пацев
+                    </span>
+                  </button>
+                </li>
+
+                <li class="vote__item people">
+                  <button class="people__link" tabindex="0">
+                    <span class="people__img-wrap">
+                      <span class="people__emoji emoji"></span>
+                      <picture>
+                        <source
+                          type="image/webp"
+                          srcset="assets/images/1x/10.webp 1x,
+                                  assets/images/2x/10.webp 2x,
+                                  assets/images/3x/10.webp 3x,
+                                  assets/images/4x/10.webp 4x"
+                        >
+
+                        <img
+                          class="people__img"
+                          src="assets/images/1x/10.jpg"
+                          srcset="assets/images/2x/10.jpg 2x,
+                                  assets/images/3x/10.jpg 3x,
+                                  assets/images/4x/10.jpg 4x"
+                          alt="Яна Берникова"
+                        >
+                      </picture>
+                    </span>
+                    <span class="people__name">
+                      Яна Берникова
+                    </span>
+                  </button>
+                </li>
+
+                <li class="vote__item people">
+                  <button class="people__link" tabindex="0">
+                    <span class="people__img-wrap">
+                      <span class="people__emoji emoji"></span>
+                      <picture>
+                        <source
+                          type="image/webp"
+                          srcset="assets/images/1x/12.webp 1x,
+                                  assets/images/2x/12.webp 2x,
+                                  assets/images/3x/12.webp 3x,
+                                  assets/images/4x/12.webp 4x"
+                        >
+
+                        <img
+                          class="people__img"
+                          src="assets/images/1x/12.jpg"
+                          srcset="assets/images/2x/12.jpg 2x,
+                                  assets/images/3x/12.jpg 3x,
+                                  assets/images/4x/12.jpg 4x"
+                          alt="Алексей Ярошевич"
+                        >
+                      </picture>
+                    </span>
+                    <span class="people__name">
+                      Алексей Ярошевич
+                    </span>
+                  </button>
+                </li>
+
+                <li class="vote__item people">
+                  <button class="people__link" tabindex="0">
+                    <span class="people__img-wrap">
+                      <span class="people__emoji emoji"></span>
+                      <picture>
+                        <source
+                          type="image/webp"
+                          srcset="assets/images/1x/11.webp 1x,
+                                  assets/images/2x/11.webp 2x,
+                                  assets/images/3x/11.webp 3x,
+                                  assets/images/4x/11.webp 4x"
+                        >
+
+                        <img
+                          class="people__img"
+                          src="assets/images/1x/11.jpg"
+                          srcset="assets/images/2x/11.jpg 2x,
+                                  assets/images/3x/11.jpg 3x,
+                                  assets/images/4x/11.jpg 4x"
+                          alt="Юрий Фролов"
+                        >
+                      </picture>
+                    </span>
+                    <span class="people__name">
+                      Юрий Фролов
+                    </span>
+                  </button>
+                </li>
+
+                <li class="vote__item people">
+                  <button class="people__link" tabindex="0">
+                    <span class="people__img-wrap">
+                      <span class="people__emoji emoji"></span>
+                      <picture>
+                        <source
+                          type="image/webp"
+                          srcset="assets/images/1x/2.webp 1x,
+                                  assets/images/2x/2.webp 2x,
+                                  assets/images/3x/2.webp 3x,
+                                  assets/images/4x/2.webp 4x"
+                        >
+
+                        <img
+                          class="people__img"
+                          src="assets/images/1x/2.jpg"
+                          srcset="assets/images/2x/2.jpg 2x,
+                                  assets/images/3x/2.jpg 3x,
+                                  assets/images/4x/2.jpg 4x"
+                          alt="Александр Шлейко"
+                        >
+                      </picture>
+                    </span>
+                    <span class="people__name">
+                      Александр Шлейко
+                    </span>
+                  </button>
+                </li>
+
+                <li class="vote__item people">
+                  <button class="people__link" tabindex="0">
+                    <span class="people__img-wrap">
+                      <span class="people__emoji emoji"></span>
+                      <picture>
+                        <source
+                          type="image/webp"
+                          srcset="assets/images/1x/5.webp 1x,
+                                  assets/images/2x/5.webp 2x,
+                                  assets/images/3x/5.webp 3x,
+                                  assets/images/4x/5.webp 4x"
+                        >
+
+                        <img
+                          class="people__img"
+                          src="assets/images/1x/5.jpg"
+                          srcset="assets/images/2x/5.jpg 2x,
+                                  assets/images/3x/5.jpg 3x,
+                                  assets/images/4x/5.jpg 4x"
+                          alt="Александр Николаичев"
+                        >
+                      </picture>
+                    </span>
+                    <span class="people__name">
+                      Александр Николаичев
+                    </span>
+                  </button>
+                </li>
+
+                <li class="vote__item people">
+                  <button class="people__link" tabindex="0">
+                    <span class="people__img-wrap">
+                      <span class="people__emoji emoji"></span>
+                      <picture>
+                        <source
+                          type="image/webp"
+                          srcset="assets/images/1x/6.webp 1x,
+                                  assets/images/2x/6.webp 2x,
+                                  assets/images/3x/6.webp 3x,
+                                  assets/images/4x/6.webp 4x"
+                        >
+
+                        <img
+                          class="people__img"
+                          src="assets/images/1x/6.jpg"
+                          srcset="assets/images/2x/6.jpg 2x,
+                                  assets/images/3x/6.jpg 3x,
+                                  assets/images/4x/6.jpg 4x"
+                          alt="Андрей Мокроусов"
+                        >
+                      </picture>
+                    </span>
+                    <span class="people__name">
+                      Андрей Мокроусов
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <div class="vote__swiper-slide">
+              <ul class="vote__list">
+                <li class="vote__item people">
+                  <button class="people__link" tabindex="-1">
+                    <span class="people__emoji emoji"></span>
+                    <span class="people__img-wrap">
+                      <picture>
+                        <source
+                          type="image/webp"
+                          srcset="assets/images/1x/1.webp 1x,
+                                  assets/images/2x/1.webp 2x,
+                                  assets/images/3x/1.webp 3x,
+                                  assets/images/4x/1.webp 4x"
+                        >
+
+                        <img
+                          class="people__img"
+                          src="assets/images/1x/1.jpg"
+                          srcset="assets/images/2x/1.jpg 2x,
+                                  assets/images/3x/1.jpg 3x,
+                                  assets/images/4x/1.jpg 4x"
+                          alt="Евгений Дементьев"
+                        >
+                      </picture>
+                    </span>
+                    <span class="people__name">
+                      Евгений Дементьев
+                    </span>
+                  </button>
+                </li>
+
+                <li class="vote__item people">
+                  <button class="people__link" tabindex="-1">
+                    <span class="people__img-wrap">
+                      <span class="people__emoji emoji"></span>
+                      <picture>
+                        <source
+                          type="image/webp"
+                          srcset="assets/images/1x/10.webp 1x,
+                                  assets/images/2x/10.webp 2x,
+                                  assets/images/3x/10.webp 3x,
+                                  assets/images/4x/10.webp 4x"
+                        >
+
+                        <img
+                          class="people__img"
+                          src="assets/images/1x/10.jpg"
+                          srcset="assets/images/2x/10.jpg 2x,
+                                  assets/images/3x/10.jpg 3x,
+                                  assets/images/4x/10.jpg 4x"
+                          alt="Яна Берникова"
+                        >
+                      </picture>
+                    </span>
+                    <span class="people__name">
+                      Яна Берникова
+                    </span>
+                  </button>
+                </li>
+
+                <li class="vote__item people">
+                  <button class="people__link" tabindex="-1">
+                    <span class="people__img-wrap">
+                      <span class="people__emoji emoji"></span>
+                      <picture>
+                        <source
+                          type="image/webp"
+                          srcset="assets/images/1x/12.webp 1x,
+                                  assets/images/2x/12.webp 2x,
+                                  assets/images/3x/12.webp 3x,
+                                  assets/images/4x/12.webp 4x"
+                        >
+
+                        <img
+                          class="people__img"
+                          src="assets/images/1x/12.jpg"
+                          srcset="assets/images/2x/12.jpg 2x,
+                                  assets/images/3x/12.jpg 3x,
+                                  assets/images/4x/12.jpg 4x"
+                          alt="Алексей Ярошевич"
+                        >
+                      </picture>
+                    </span>
+                    <span class="people__name">
+                      Алексей Ярошевич
+                    </span>
+                  </button>
+                </li>
+
+                <li class="vote__item people">
+                  <button class="people__link" tabindex="-1">
+                    <span class="people__img-wrap">
+                      <span class="people__emoji emoji"></span>
+                      <picture>
+                        <source
+                          type="image/webp"
+                          srcset="assets/images/1x/5.webp 1x,
+                                  assets/images/2x/5.webp 2x,
+                                  assets/images/3x/5.webp 3x,
+                                  assets/images/4x/5.webp 4x"
+                        >
+
+                        <img
+                          class="people__img"
+                          src="assets/images/1x/5.jpg"
+                          srcset="assets/images/2x/5.jpg 2x,
+                                  assets/images/3x/5.jpg 3x,
+                                  assets/images/4x/5.jpg 4x"
+                          alt="Александр Николаичев"
+                        >
+                      </picture>
+                    </span>
+                    <span class="people__name">
+                      Александр Николаичев
+                    </span>
+                  </button>
+                </li>
+
+                <li class="vote__item people">
+                  <button class="people__link" tabindex="-1">
+                    <span class="people__img-wrap">
+                      <span class="people__emoji emoji"></span>
+                      <picture>
+                        <source
+                          type="image/webp"
+                          srcset="assets/images/1x/6.webp 1x,
+                                  assets/images/2x/6.webp 2x,
+                                  assets/images/3x/6.webp 3x,
+                                  assets/images/4x/6.webp 4x"
+                        >
+
+                        <img
+                          class="people__img"
+                          src="assets/images/1x/6.jpg"
+                          srcset="assets/images/2x/6.jpg 2x,
+                                  assets/images/3x/6.jpg 3x,
+                                  assets/images/4x/6.jpg 4x"
+                          alt="Андрей Мокроусов"
+                        >
+                      </picture>
+                    </span>
+                    <span class="people__name">
+                      Андрей Мокроусов
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <div class="vote__swiper-slide">
+              <ul class="vote__list">
+                <li class="vote__item people">
+                  <button class="people__link" tabindex="-1">
+                    <span class="people__img-wrap">
+                      <span class="people__emoji emoji"></span>
+                      <picture>
+                        <source
+                          type="image/webp"
+                          srcset="assets/images/1x/6.webp 1x,
+                                  assets/images/2x/6.webp 2x,
+                                  assets/images/3x/6.webp 3x,
+                                  assets/images/4x/6.webp 4x"
+                        >
+
+                        <img
+                          class="people__img"
+                          src="assets/images/1x/6.jpg"
+                          srcset="assets/images/2x/6.jpg 2x,
+                                  assets/images/3x/6.jpg 3x,
+                                  assets/images/4x/6.jpg 4x"
+                          alt="Андрей Мокроусов"
+                        >
+                      </picture>
+                    </span>
+                    <span class="people__name">
+                      Андрей Мокроусов
+                    </span>
+                  </button>
+                </li>
+
+                <li class="vote__item people">
+                  <button class="people__link" tabindex="-1">
+                    <span class="people__img-wrap">
+                      <span class="people__emoji emoji"></span>
+                      <picture>
+                        <source
+                          type="image/webp"
+                          srcset="assets/images/1x/10.webp 1x,
+                                  assets/images/2x/10.webp 2x,
+                                  assets/images/3x/10.webp 3x,
+                                  assets/images/4x/10.webp 4x"
+                        >
+
+                        <img
+                          class="people__img"
+                          src="assets/images/1x/10.jpg"
+                          srcset="assets/images/2x/10.jpg 2x,
+                                  assets/images/3x/10.jpg 3x,
+                                  assets/images/4x/10.jpg 4x"
+                          alt="Яна Берникова"
+                        >
+                      </picture>
+                    </span>
+                    <span class="people__name">
+                      Яна Берникова
+                    </span>
+                  </button>
+                </li>
+
+                <li class="vote__item people">
+                  <button class="people__link" tabindex="-1">
+                    <span class="people__img-wrap">
+                      <span class="people__emoji emoji"></span>
+                      <picture>
+                        <source
+                          type="image/webp"
+                          srcset="assets/images/1x/12.webp 1x,
+                                  assets/images/2x/12.webp 2x,
+                                  assets/images/3x/12.webp 3x,
+                                  assets/images/4x/12.webp 4x"
+                        >
+
+                        <img
+                          class="people__img"
+                          src="assets/images/1x/12.jpg"
+                          srcset="assets/images/2x/12.jpg 2x,
+                                  assets/images/3x/12.jpg 3x,
+                                  assets/images/4x/12.jpg 4x"
+                          alt="Алексей Ярошевич"
+                        >
+                      </picture>
+                    </span>
+                    <span class="people__name">
+                      Алексей Ярошевич
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <button class="vote__swiper-button-prev button button--prev button--disabled" disabled="true">
+            <svg class="button__icon" width="64" height="64">
+              <use xlink:href="assets/images/sprite.svg#button"></use>
+            </svg>
+          </button>
+
+          <button class="vote__swiper-button-next button button--next">
+            <svg class="button__icon" width="64" height="64">
+              <use xlink:href="assets/images/sprite.svg#button"></use>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Swiper -->
+        <!-- <div class="swiper-container vote__swiper-container" id="vote-swiper">
           <div class="swiper-wrapper vote__swiper-wrapper">
             <div class="swiper-slide vote__swiper-slide">
               <ul class="vote__list">
@@ -644,7 +1138,7 @@
               <use xlink:href="assets/images/sprite.svg#button"></use>
             </svg>
           </div>
-        </div>
+        </div> -->
       </section>
     </div>
   </main>
