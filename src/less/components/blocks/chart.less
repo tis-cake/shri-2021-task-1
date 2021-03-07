@@ -1,0 +1,200 @@
+.chart {
+  width: 100%;
+  .padding-inline(0);
+  padding-bottom: 20px;
+}
+
+.chart__text-wrap {
+  box-sizing: border-box;
+  width: 100%;
+  .padding-inline(@gap-container);
+}
+
+.chart__title {}
+
+.chart__subtitle {}
+
+.chart__list-stats {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+
+  width: 100%;
+  height: 386px;
+  margin-top: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 32px;
+
+  overflow-y: hidden;
+  overflow-x: scroll;
+
+  // визуально прячем скролл
+  // актуально для десктопной версии
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+.chart__stat {
+  --gap-static: 24px;
+  --gap-stretching: 6.4vw;
+  --hidden-width: 1px;
+
+  position: relative;
+  flex-shrink: 0;
+  width: 40px;
+  max-height: 70%;
+  min-height: 8px;
+  height: 100%;
+  // margin-right: 24px;
+  margin-right: var(--gap-stretching);
+
+  background-image: @bg-stats-fivefold;
+  box-shadow: @shadow-stats-secondary;
+  border-radius: @radius;
+
+  &:first-child {
+    margin-right: @gap-container;
+  }
+
+  &:nth-last-child(2) {
+    margin-left: calc(@gap-container - var(--hidden-width));
+  }
+
+  &--hidden {
+    width: var(--hidden-width);
+    margin-right: 0;
+    opacity: 0;
+    visibility: hidden;
+    .chart__amount-commits,
+    .chart__sprint-number {
+      display: none;
+    }
+  }
+
+  &--gold {
+    background-image: @bg-stats-quaternary;
+    box-shadow: @shadow-stats-primary;
+  }
+
+  // &:nth-last-child(1) {
+  //   width: var(--hidden-width);
+  //   margin-right: 0;
+  //   opacity: 0;
+  //   visibility: hidden;
+  //   .chart__amount-commits,
+  //   .chart__sprint-number {
+  //     display: none;
+  //   }
+  // }
+
+  // временно
+  &:nth-child(1),
+  &:nth-child(2) {
+    height: auto;
+  }
+  &:nth-child(7),
+  &:nth-child(4) {
+    height: 20%;
+  }
+  &:nth-child(5) {
+    height: 48%;
+  }
+}
+
+.chart__amount-commits,
+.chart__sprint-number {
+  position: absolute;
+  // transform
+  width: 100%;
+  text-align: center;
+}
+
+.chart__amount-commits {
+  top: -30px;
+}
+
+.chart__sprint-number {
+  bottom: -30px;
+  color: @color-secondary;
+  font-weight: 500;
+}
+
+.chart__list-leaders {
+  display: grid;
+  gap: 34px;
+  .padding-inline(@gap-container);
+}
+
+.chart__leader {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -16px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    opacity: 0.3;
+    background-color: @color-secondary;
+  }
+
+  &:first-child {
+    &::before {
+      content: none;
+    }
+  }
+}
+
+@media only screen and (min-width: @width-tablet-small) {
+  .chart {
+    width: 552px;
+  }
+
+  .chart__list-stats {
+    height: 168px;
+  }
+
+  .chart__stat {
+    margin-right: var(--gap-static);
+
+    &--hidden {
+      display: none;
+    }
+
+    &:first-child {
+      margin-right: 0;
+    }
+
+    &:nth-last-child(2) {
+      margin-left: 0;
+    }
+  }
+
+  .chart__list-leaders {
+    grid-template-columns: repeat(2, 1fr);
+    width: 474px;
+    .margin-inline(@a);
+    .padding-inline(0);
+  }
+
+  .chart__leader {
+    &::before {
+      top: 0;
+      left: -18px;
+      width: 2px;
+      height: 100%;
+    }
+
+    &:nth-child(2n+1) {
+      &::before {
+        content: none;
+      }
+    }
+  }
+}
