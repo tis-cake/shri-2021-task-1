@@ -60,7 +60,7 @@ const sliderInit = (classBEM) => {
   // сценарии
   const disableButton = (button) => {
     button.classList.add(buttonDisabledClass);
-    button.setAttribute('disabled', true);
+    button.setAttribute('disabled', 'disabled');
   };
 
   const activateButton = (button) => {
