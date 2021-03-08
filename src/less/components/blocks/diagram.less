@@ -1,0 +1,172 @@
+.diagram {
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.diagram__text-wrap {
+  margin-bottom: 32px;
+}
+
+.diagram__title {}
+
+.diagram__subtitle {}
+
+.diagram__wrap {
+  display: grid;
+}
+
+.diagram__figure {
+  box-sizing: border-box;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 328px;
+  margin-bottom: 32px;
+  padding: 50px;
+
+  text-align: center;
+}
+
+.diagram__figcaption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  width: 164px;
+  height: 116px;
+}
+
+.diagram__figcaption-title {}
+
+.diagram__figcaption-subtitle {
+  margin-top: 8px;
+  color: @color-secondary;
+}
+
+.diagram__picture {
+  display: none;
+
+  width: 100%;
+  height: 100%;
+
+  &--diagram {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+  }
+
+  &--icon {}
+
+  &--theme-light {}
+
+  &--theme-dark {
+    .diagram__image {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.diagram__image,
+.diagram__icon {
+  .img-contain;
+}
+
+.diagram__detail-list {
+  display: grid;
+  row-gap: 34px;
+}
+
+.diagram__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    opacity: 0.3;
+    background-color: @color-secondary;
+  }
+
+  &:last-child {
+    &::before {
+      content: none;
+    }
+  }
+}
+
+.diagram__icon-wrap {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  border-radius: 50%;
+
+  &--largest {}
+
+  &--large {}
+
+  &--small {}
+
+  &--smallest {}
+}
+
+.diagram__value-desc {}
+
+.diagram__value-change,
+.diagram__value-current {
+  color: @color-secondary;
+}
+
+.diagram__value-change {
+  margin-left: auto;
+}
+
+.diagram__value-current {
+  margin-left: 16px;
+}
+
+@media only screen and (min-width: @width-tablet-middle) {
+  .diagram {
+    width: 584px;
+  }
+
+  .diagram__text-wrap {
+    margin-bottom: 29px;
+  }
+
+  .diagram__wrap {
+    grid-template-columns: 240px  304px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .diagram__figure {
+    height: 240px;
+    margin-bottom: 0;
+  }
+
+  .diagram__figcaption {
+    width: 120px;
+    height: 86px;
+  }
+
+  .diagram__figcaption-title {
+    --font-size: 20px;
+  }
+
+  .diagram__figcaption-subtitle {
+    --font-size: 16px;
+
+    margin-top: 6px;
+  }
+}

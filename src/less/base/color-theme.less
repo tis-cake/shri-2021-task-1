@@ -67,11 +67,13 @@ html {
 @button-primary: var(--color-button-primary);
 @button-secondary: var(--color-button-secondary);
 
-// @black: var(--color-dark);
-// @white: var(--color-white-light);
-// @grey: var(--color-grey);
 @grey-light: var(--color-grey-light);
-// @yellow: var(--color-yellow);
+
+.theme_dark {
+  .diagram__picture--theme-dark {
+    display: inline-block;
+  }
+}
 
 .theme_light {
   --color-primary: var(--color-dark);
@@ -96,5 +98,9 @@ html {
 
   .people__img {
     filter: none;
+  }
+
+  .diagram__picture--theme-light {
+    display: inline-block;
   }
 }
