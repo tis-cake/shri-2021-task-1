@@ -140,6 +140,10 @@
 .activity__bar-desc {
   padding-top: 8px;
   color: @grey;
+
+  &--tablet {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: @width-phone-middle) {
@@ -203,6 +207,16 @@
   .activity__list-legends {
     width: 332px;
     .margin-inline(@a);
+  }
+
+  .activity__bar-desc {
+    &--mobile {
+      display: none;
+    }
+
+    &--tablet {
+      display: block;
+    }
   }
 }
 
