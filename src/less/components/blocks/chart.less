@@ -1,14 +1,14 @@
 .chart {
   width: 100%;
   .padding-inline(0);
-  padding-bottom: 20px;
+  padding-bottom: @gap-container-block;
 }
 
 .chart__text-wrap {
   box-sizing: border-box;
   width: 100%;
   margin-bottom: 12px;
-  .padding-inline(@gap-container);
+  .padding-inline(@gap-container-inline);
 }
 
 .chart__title {}
@@ -59,11 +59,11 @@
   border-radius: @radius;
 
   &:first-child {
-    margin-right: @gap-container;
+    margin-right: @gap-container-inline;
   }
 
   &:nth-last-child(2) {
-    margin-left: calc(@gap-container - var(--hidden-width));
+    margin-left: calc(@gap-container-inline - var(--hidden-width));
   }
 
   &--hidden {
@@ -128,7 +128,7 @@
 .chart__list-leaders {
   display: grid;
   gap: 34px;
-  .padding-inline(@gap-container);
+  .padding-inline(@gap-container-inline);
 }
 
 .chart__leader {

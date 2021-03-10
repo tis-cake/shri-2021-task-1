@@ -1,4 +1,8 @@
-.activity {}
+.activity {
+  box-sizing: border-box;
+  overflow: hidden;
+  padding-bottom: @gap-container-block;
+}
 
 .activity__text-wrap {
   margin-bottom: 54px;
@@ -9,7 +13,7 @@
 .activity__subtitle {}
 
 .activity__list-graphs {
-  margin-bottom: 46px;
+  margin-bottom: 24px;
 
   &--tablet {
     display: none;
@@ -74,7 +78,7 @@
 
 .activity__list-legends {
   display: grid;
-  grid-template-columns: repeat(5, 59px);
+  grid-template-columns: repeat(5, 46px);
   justify-content: space-between;
 }
 
@@ -83,7 +87,8 @@
 .activity__bar-color {
   display: block;
   position: relative;
-  width: 50px;
+  // width: 50px;
+  width: 100%;
   height: 12px;
   border-radius: 2px;
 
@@ -147,6 +152,18 @@
 }
 
 @media only screen and (min-width: @width-phone-middle) {
+  .activity {
+    overflow: initial;
+  }
+
+  .activity__list-graphs {
+    margin-bottom: 46px;
+  }
+
+  .activity__list-legends {
+    grid-template-columns: repeat(5, 59px);
+  }
+
   .activity__bar-color {
     width: 100%;
   }

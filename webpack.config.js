@@ -16,7 +16,8 @@ const isTarget = isDev ? 'web' : 'browserslist';
 
 const filename = (extension) => {
   const commonName = 'stories';
-  return `${commonName}.${extension}`;
+  // return `${commonName}.${extension}`;
+  return `${commonName}.[hash].${extension}`;
 
   // return isDev ? `[name].${extension}` : `[name].[hash].${extension}`;
 };
@@ -113,10 +114,10 @@ module.exports = {
           from: path.resolve(__dirname, 'src/assets/images'),
           to: path.resolve(__dirname, 'build/assets/images'),
         },
-        // {
-        //   from: path.resolve(__dirname, 'src/assets/sprite.svg'),
-        //   to: path.resolve(__dirname, 'build/assets/sprite.svg'),
-        // },
+        {
+          from: path.resolve(__dirname, 'src/assets/favicon'),
+          to: path.resolve(__dirname, 'build/assets/favicon'),
+        },
       ],
     }),
   ],
