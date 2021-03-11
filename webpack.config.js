@@ -3,21 +3,23 @@ const path = require('path');
 
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
+const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
 const isDevTool = isDev ? 'source-map' : false;
 const isTarget = isDev ? 'web' : 'browserslist';
 
+// const folderImages = 'assets/images';
+
 const filename = (extension) => {
   const commonName = 'stories';
   // return `${commonName}.${extension}`;
-  return `${commonName}.[hash].${extension}`;
+  return isProd ? `${commonName}.${extension}` : `${commonName}.[hash].${extension}`;
 
   // return isDev ? `[name].${extension}` : `[name].[hash].${extension}`;
 };
@@ -107,7 +109,6 @@ module.exports = {
       filename: filename('css'),
     }),
     new WebpackNotifierPlugin(),
-    // new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
         {
@@ -119,6 +120,17 @@ module.exports = {
           to: path.resolve(__dirname, 'build/assets/favicon'),
         },
       ],
+    }),
+    new ImageminWebpackPlugin({
+      test: /\.(png|jpe?g|svg|gif|webp)$/,
+      cacheFolder: path.resolve(__dirname, 'src/assets/cache'),
+      // optipng: { optimizationLevel: 3 },
+      pngquant: { quality: '95-100' },
+      jpegtran: { quality: 80, progressive: true },
+      gifsicle: { interlaced: true },
+      svgo: {
+        plugins: [{ removeViewBox: false }]
+      },
     }),
   ],
   module: {
@@ -175,5 +187,10 @@ module.exports = {
     ],
   },
   devtool: isDevTool,
+  performance: {
+    assetFilter(assetFilename) {
+      return !/\.(map|png|jpe?g|webp)$/.test(assetFilename);
+    },
+  },
   // target: isTarget,
 };
