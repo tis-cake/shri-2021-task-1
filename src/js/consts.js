@@ -1,9 +1,8 @@
-const SlideTitles = {
-  leaders: 'Больше всего коммитов',
-  vote: 'Самый внимательный разработчик',
-  chart: 'Коммиты',
-  diagram: 'Размер коммитов',
-  activity: 'Коммиты, 1 неделя',
+const RenderPosition = {
+  BEFOREBEGIN: 'beforebegin',
+  AFTERBEGIN: 'afterbegin',
+  BEFOREEND: 'beforeend',
+  AFTEREND: 'afterend',
 };
 
-export { SlideTitles };
+export { RenderPosition };

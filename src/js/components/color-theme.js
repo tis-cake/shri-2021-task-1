@@ -17,7 +17,7 @@ const changeFavicon = () => {
     newColor = 'light';
   } else {
     oldColor = 'light';
-    newColor = 'light';
+    newColor = 'dark';
   }
 
   for (const favicon of favicons) {
