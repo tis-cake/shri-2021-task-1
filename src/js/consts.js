@@ -5,4 +5,6 @@ const RenderPosition = {
   AFTEREND: 'afterend',
 };
 
-export { RenderPosition };
+const SELECTED_USER_EMOJI = '👍';
+
+export { RenderPosition, SELECTED_USER_EMOJI };

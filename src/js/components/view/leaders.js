@@ -1,8 +1,5 @@
-// 1) Рендерим не больше 5.
-// 2) Если есть выбранный пользователь:
-// 2.1) добавить свой emoji;
-// 2.2.1) если не попал в лидеры - добавить на 5 место (деск);
-// 2.2.2) если не попал в лидеры - добавить в специальное контейнер на 1 месте (моб);
+import { getSelectedUserIndex, cropExtension } from '../../utils/common';
+import { SELECTED_USER_EMOJI } from '../../consts';
 
 const MAX_USERS_COUNT = 5;
 const LAST_INDEX = MAX_USERS_COUNT - 1;
@@ -12,8 +9,7 @@ const createUserNotIncludedMarkup = (user, index) => {
 
   const placeNumber = index + 1;
 
-  // for webp
-  const avatarSlicedName = avatar.replace(/\.[^/.]+$/, '');
+  const avatarCroppedName = cropExtension(avatar);
 
   return (
     `
@@ -23,10 +19,10 @@ const createUserNotIncludedMarkup = (user, index) => {
           <picture>
             <source
               type="image/webp"
-              srcset="assets/images/1x/person/${avatarSlicedName}.webp 1x,
-                      assets/images/2x/person/${avatarSlicedName}.webp 2x,
-                      assets/images/3x/person/${avatarSlicedName}.webp 3x,
-                      assets/images/4x/person/${avatarSlicedName}.webp 4x"
+              srcset="assets/images/1x/person/${avatarCroppedName}.webp 1x,
+                      assets/images/2x/person/${avatarCroppedName}.webp 2x,
+                      assets/images/3x/person/${avatarCroppedName}.webp 3x,
+                      assets/images/4x/person/${avatarCroppedName}.webp 4x"
             >
 
             <img
@@ -59,8 +55,6 @@ const createUserMarkup = (user, index, options) => {
   const { emoji, selectedUserNotIncluded } = options;
   let { selectedUserIndex } = options;
 
-  const selectedUserEmoji = '👍';
-  const placeClassNumber = index + 1;
   let placeNumber = index + 1;
 
   let userNotIncludedMarkup;
@@ -77,24 +71,28 @@ const createUserMarkup = (user, index, options) => {
     selectedUserIndex = LAST_INDEX;
   }
 
-  const isWinnerEmoji = (index === 0) ? emoji : '';
-  const isSelectedUserEmoji = (index !== 0 && index === selectedUserIndex) ? selectedUserEmoji : '';
+  const isWinnerEmoji = (index === 0)
+    ? emoji
+    : '';
 
-  // for webp
-  const avatarSlicedName = avatar.replace(/\.[^/.]+$/, '');
+  const isSelectedUserEmoji = (index !== 0 && index === selectedUserIndex)
+    ? SELECTED_USER_EMOJI
+    : '';
+
+  const avatarCroppedName = cropExtension(avatar);
 
   return (
     `
-      <li class="leaders__item leaders__item--${placeClassNumber} people__item">
+      <li class="leaders__item people__item">
         <span class="people__img-wrap">
           <span class="people__emoji emoji">${isWinnerEmoji}${isSelectedUserEmoji}</span>
           <picture>
             <source
               type="image/webp"
-              srcset="assets/images/1x/person/${avatarSlicedName}.webp 1x,
-                      assets/images/2x/person/${avatarSlicedName}.webp 2x,
-                      assets/images/3x/person/${avatarSlicedName}.webp 3x,
-                      assets/images/4x/person/${avatarSlicedName}.webp 4x"
+              srcset="assets/images/1x/person/${avatarCroppedName}.webp 1x,
+                      assets/images/2x/person/${avatarCroppedName}.webp 2x,
+                      assets/images/3x/person/${avatarCroppedName}.webp 3x,
+                      assets/images/4x/person/${avatarCroppedName}.webp 4x"
             >
 
             <img
@@ -131,13 +129,13 @@ const createUserMarkup = (user, index, options) => {
 const createUsersMarkup = (data) => {
   const { emoji, users, selectedUserId } = data;
 
+  const selectedUserIndex = getSelectedUserIndex(selectedUserId, users);
   let usersMarkup = users;
-  let selectedUserIndex;
   let selectedUserNotIncluded;
 
-  if (selectedUserId !== null && selectedUserId !== undefined) {
-    selectedUserIndex = users.findIndex((user) => user.id === selectedUserId);
-  }
+  // if (selectedUserId !== null && selectedUserId !== undefined) {
+  //   selectedUserIndex = users.findIndex((user) => user.id === selectedUserId);
+  // }
 
   if (selectedUserIndex > LAST_INDEX) {
     selectedUserNotIncluded = users[selectedUserIndex];
