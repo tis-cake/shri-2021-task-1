@@ -14,8 +14,6 @@ const isProd = !isDev;
 const isDevTool = isDev ? 'source-map' : false;
 const isTarget = isDev ? 'web' : 'browserslist';
 
-// const folderImages = 'assets/images';
-
 const filename = (extension) => {
   const commonName = 'stories';
   // return `${commonName}.${extension}`;
@@ -129,7 +127,11 @@ module.exports = {
       jpegtran: { quality: 80, progressive: true },
       gifsicle: { interlaced: true },
       svgo: {
-        plugins: [{ removeViewBox: false }]
+        plugins: [
+          { removeUselessDefs: false },
+          { cleanupIDs: false },
+          // { removeViewBox: false },
+        ]
       },
     }),
   ],
