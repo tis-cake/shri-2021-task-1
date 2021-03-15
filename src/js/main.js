@@ -16,6 +16,7 @@ const board = document.querySelector('.board');
 // const leaders = createLeadersTemplate(DATA[5].data);
 // renderMarkup(board, leaders);
 
+// const vote = createVoteTemplate(DATA[2].data);
 const vote = createVoteTemplate(DATA[4].data);
 renderMarkup(board, vote);
 

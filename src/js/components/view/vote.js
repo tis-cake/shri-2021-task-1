@@ -104,7 +104,11 @@ const createSlideMarkup = (minSetSlides, maxSetSlides, slideIndex, selectedUserI
 };
 
 const createSlidesMarkup = (data) => {
-  const { users, selectedUserId } = data;
+  const { users, selectedUserId, offset } = data;
+
+  if (offset) {
+    users.unshift(users[offset]);
+  }
 
   const slides = [];
   const slidesMobile = sliceUsersIntoSlides(users, USER_COUNT_IN_SLIDE_MOBILE);
@@ -124,8 +128,6 @@ const createSlidesMarkup = (data) => {
   for (let i = 0; i < minSetSlides.length; i++) {
     slides[i] = createSlideMarkup(minSetSlides[i], maxSetSlides[i], i, selectedUserId);
   }
-
-  console.log(minSetSlides, maxSetSlides);
 
   const slidesMarkup = slides.join('');
 
