@@ -1,8 +1,20 @@
 import { cropExtension } from '../../utils/common';
 import { SELECTED_USER_EMOJI } from '../../consts';
 
-const USER_COUNT_IN_SLIDE = 6;
-const MOBILE_DESKTOP_DIFF = 2;
+const USER_COUNT_IN_SLIDE_MOBILE = 8;
+const USER_COUNT_IN_SLIDE_DESKTOP = 6;
+
+const sliceUsersIntoSlides = (users, userCountInSlide) => {
+  const slides = [];
+  const slidesCount = Math.ceil(users.length / userCountInSlide);
+
+  for (let i = 0; i < slidesCount; i++) {
+    const prevUserCount = i * userCountInSlide;
+    slides[i] = users.slice(prevUserCount, prevUserCount + userCountInSlide);
+  }
+
+  return slides;
+};
 
 const createUserMarkup = (user, options) => {
   const { id, name, avatar } = user;
@@ -58,22 +70,33 @@ const createUserMarkup = (user, options) => {
   );
 };
 
-const createSlideMarkup = (slides, slideIndex, selectedUserId) => {
-  console.log(slides);
-
+const createSlideMarkup = (minSetSlides, maxSetSlides, slideIndex, selectedUserId) => {
   const extraOptions = { slideIndex, selectedUserId };
 
-  const usersMarkup = slides
-    .map((el) => {
-      return createUserMarkup(el, extraOptions);
-    })
+  const slideClass = (maxSetSlides)
+    ? 'vote__swiper-slide'
+    : 'vote__swiper-slide vote__swiper-slide--hiding';
+
+  const usersMarkupMinSet = minSetSlides
+    .map((el) => createUserMarkup(el, extraOptions))
     .join('');
+
+  let usersMarkupMaxSet = '';
+
+  if (maxSetSlides) {
+    usersMarkupMaxSet = maxSetSlides
+      .map((el) => createUserMarkup(el, extraOptions))
+      .join('');
+  }
 
   return (
     `
-      <div class="vote__swiper-slide">
-        <ul class="vote__list people">
-          ${usersMarkup}
+      <div class="${slideClass}">
+        <ul class="vote__list vote__list--min people">
+          ${usersMarkupMinSet}
+        </ul>
+        <ul class="vote__list vote__list--max people">
+          ${usersMarkupMaxSet}
         </ul>
       </div>
     `
@@ -83,33 +106,28 @@ const createSlideMarkup = (slides, slideIndex, selectedUserId) => {
 const createSlidesMarkup = (data) => {
   const { users, selectedUserId } = data;
 
-  const slidesCount = Math.ceil(users.length / USER_COUNT_IN_SLIDE);
-  // const isEqualCountSlides = (users.length % USER_COUNT_IN_SLIDE === 0);
-
   const slides = [];
+  const slidesMobile = sliceUsersIntoSlides(users, USER_COUNT_IN_SLIDE_MOBILE);
+  const slidesDesktop = sliceUsersIntoSlides(users, USER_COUNT_IN_SLIDE_DESKTOP);
 
-  for (let i = 0; i < slidesCount; i++) {
-    const prevUserCount = i * USER_COUNT_IN_SLIDE;
-    slides[i] = users.slice(prevUserCount, prevUserCount + USER_COUNT_IN_SLIDE);
+  let minSetSlides;
+  let maxSetSlides;
 
-    if (users.length <= USER_COUNT_IN_SLIDE) {
-      break;
-    }
-
-    if (slides[i].length === USER_COUNT_IN_SLIDE) {
-      const startExtraIndex = (i + 1) * USER_COUNT_IN_SLIDE;
-      const endExtraIndex = (i + 1) * USER_COUNT_IN_SLIDE + MOBILE_DESKTOP_DIFF;
-
-      const extraUsers = users.slice(startExtraIndex, endExtraIndex);
-      slides[i].push(...extraUsers);
-    }
+  if (USER_COUNT_IN_SLIDE_MOBILE < USER_COUNT_IN_SLIDE_DESKTOP) {
+    minSetSlides = slidesMobile;
+    maxSetSlides = slidesDesktop;
+  } else {
+    minSetSlides = slidesDesktop;
+    maxSetSlides = slidesMobile;
   }
 
-  const slidesMarkup = slides
-    .map((el, i) => {
-      return createSlideMarkup(el, i, selectedUserId);
-    })
-    .join('');
+  for (let i = 0; i < minSetSlides.length; i++) {
+    slides[i] = createSlideMarkup(minSetSlides[i], maxSetSlides[i], i, selectedUserId);
+  }
+
+  console.log(minSetSlides, maxSetSlides);
+
+  const slidesMarkup = slides.join('');
 
   return (
     `

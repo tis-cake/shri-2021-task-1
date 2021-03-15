@@ -1,28 +1,8 @@
-// import Swiper, { Navigation } from 'swiper/core';
-
-// // инициализируем кастомные модули
-// Swiper.use([Navigation]);
-
-// const voteSwiper = new Swiper('#vote-swiper', {
-//   slidesPerView: 1,
-//   touchRatio: 1,
-//   direction: 'vertical',
-
-//   navigation: {
-//     nextEl: '.vote__swiper-button-next',
-//     prevEl: '.vote__swiper-button-prev',
-//   },
-// });
-
-// export { voteSwiper };
-
-// Cамописный слайдер
 const sliderInit = (classBEM) => {
   const mainSection = document.querySelector(`.${classBEM}`);
 
   // выходим, если элемент не найден
   if (!mainSection) {
-    // throw new Error('В переданном селекторе нет слайдера');
     return;
   }
 
@@ -31,9 +11,12 @@ const sliderInit = (classBEM) => {
   const buttonSlidePrev = mainSection.querySelector(`.${classBEM}__swiper-button-prev`);
   const buttonSlideNext = mainSection.querySelector(`.${classBEM}__swiper-button-next`);
 
-  const slides = mainSection.querySelectorAll(`.${classBEM}__swiper-slide`);
   const slideActiveClass = `${classBEM}__swiper-slide--active`;
+  const slideHidingClass = `${classBEM}__swiper-slide--hiding`;
   const buttonDisabledClass = 'button--disabled';
+  const slideHiding = mainSection.querySelector(`.${slideHidingClass}`);
+
+  const slides = [...mainSection.querySelectorAll(`.${classBEM}__swiper-slide`)];
   slides[0].classList.add(slideActiveClass);
 
   let slideIndex = 0;
@@ -53,6 +36,7 @@ const sliderInit = (classBEM) => {
     window.onresize = () => {
       swiperHeight = swiperContainer.offsetHeight;
 
+      changeSlidesBecauseSlideHiding();
       setTranslateProperty();
     };
   });
@@ -97,9 +81,28 @@ const sliderInit = (classBEM) => {
   };
 
   const doAfterIndexChange = () => {
-    setTranslateProperty();
     activateTabindex(slideIndex);
     addActiveClass(slideIndex);
+  };
+
+  const checkIndexForButtonSlidePrev = () => {
+    if (slideIndex === 0) {
+      disableButton(buttonSlidePrev);
+    }
+
+    if (slideIndex === slides.length - 2) {
+      activateButton(buttonSlideNext);
+    }
+  };
+
+  const checkIndexForButtonSlideNext = () => {
+    if (slideIndex === 1) {
+      activateButton(buttonSlidePrev);
+    }
+
+    if (slideIndex === slides.length - 1) {
+      disableButton(buttonSlideNext);
+    }
   };
 
   disableButton(buttonSlidePrev);
@@ -116,14 +119,8 @@ const sliderInit = (classBEM) => {
 
     slideIndex--;
 
-    if (slideIndex === 0) {
-      disableButton(buttonSlidePrev);
-    }
-
-    if (slideIndex === slides.length - 2) {
-      activateButton(buttonSlideNext);
-    }
-
+    checkIndexForButtonSlidePrev();
+    setTranslateProperty();
     doAfterIndexChange();
   };
 
@@ -132,19 +129,42 @@ const sliderInit = (classBEM) => {
 
     slideIndex++;
 
-    if (slideIndex === 1) {
-      activateButton(buttonSlidePrev);
-    }
-
-    if (slideIndex === slides.length - 1) {
-      disableButton(buttonSlideNext);
-    }
-
+    checkIndexForButtonSlideNext();
+    setTranslateProperty();
     doAfterIndexChange();
   };
 
   buttonSlidePrev.addEventListener('click', onButtonSlidePrevClick);
   buttonSlideNext.addEventListener('click', onButtonSlideNextClick);
+
+  // актуально только если количество слайдов на телефоне и десктопе различается
+  function changeSlidesBecauseSlideHiding() {
+    if (slideHiding) {
+      const isHidingSlideInSlides = (slides[slides.length - 1].classList.contains(slideHidingClass));
+      const isDisplayNone = (getComputedStyle(slideHiding).display === 'none');
+
+      if (slideHiding.classList.contains(slideActiveClass)) {
+        doBeforeIndexChange();
+        slideIndex--;
+        doAfterIndexChange();
+      }
+
+      if (isHidingSlideInSlides && isDisplayNone) {
+        // console.log('добавлен в массив и скрыт');
+        slides.splice(slides.length - 1, 1);
+      }
+
+      if (!isHidingSlideInSlides && !isDisplayNone) {
+        // console.log('не добавлен в массив и показан');
+        slides.push(slideHiding);
+      }
+
+      checkIndexForButtonSlidePrev();
+      checkIndexForButtonSlideNext();
+    }
+  }
+
+  changeSlidesBecauseSlideHiding();
 };
 
 export { sliderInit };
