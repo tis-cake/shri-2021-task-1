@@ -51,7 +51,6 @@
   max-height: 70%;
   min-height: 8px;
   height: 100%;
-  // margin-right: 24px;
   margin-right: var(--gap-stretching);
 
   background-image: @bg-stat-fivefold;
@@ -81,38 +80,18 @@
     background-image: @bg-stat-quaternary;
     box-shadow: @shadow-stat-primary;
   }
-
-  // &:nth-last-child(1) {
-  //   width: var(--hidden-width);
-  //   margin-right: 0;
-  //   opacity: 0;
-  //   visibility: hidden;
-  //   .chart__amount-commits,
-  //   .chart__sprint-number {
-  //     display: none;
-  //   }
-  // }
-
-  // временно
-  &:nth-child(1),
-  &:nth-child(2) {
-    height: auto;
-  }
-  &:nth-child(7),
-  &:nth-child(4) {
-    height: 20%;
-  }
-  &:nth-child(5) {
-    height: 48%;
-  }
 }
 
 .chart__amount-commits,
 .chart__sprint-number {
   position: absolute;
-  // transform
-  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: auto;
   text-align: center;
+
+  .no-select;
 }
 
 .chart__amount-commits {
