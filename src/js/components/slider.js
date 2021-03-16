@@ -1,3 +1,5 @@
+import { swipeInit } from './swipe';
+
 const sliderInit = (classBEM) => {
   const mainSection = document.querySelector(`.${classBEM}`);
 
@@ -105,16 +107,8 @@ const sliderInit = (classBEM) => {
     }
   };
 
-  disableButton(buttonSlidePrev);
-
-  // выходим, если слайд один
-  if (slides.length === 1) {
-    disableButton(buttonSlideNext);
-
-    return;
-  }
-
-  const onButtonSlidePrevClick = () => {
+  // переключаем слайды
+  const togglePrevSlide = () => {
     doBeforeIndexChange();
 
     slideIndex--;
@@ -124,7 +118,7 @@ const sliderInit = (classBEM) => {
     doAfterIndexChange();
   };
 
-  const onButtonSlideNextClick = () => {
+  const toggleNextSlide = () => {
     doBeforeIndexChange();
 
     slideIndex++;
@@ -134,8 +128,17 @@ const sliderInit = (classBEM) => {
     doAfterIndexChange();
   };
 
-  buttonSlidePrev.addEventListener('click', onButtonSlidePrevClick);
-  buttonSlideNext.addEventListener('click', onButtonSlideNextClick);
+  disableButton(buttonSlidePrev);
+
+  // выходим, если слайд один
+  if (slides.length === 1) {
+    disableButton(buttonSlideNext);
+
+    return;
+  }
+
+  buttonSlidePrev.addEventListener('click', togglePrevSlide);
+  buttonSlideNext.addEventListener('click', toggleNextSlide);
 
   // актуально только если количество слайдов на телефоне и десктопе различается
   function changeSlidesBecauseSlideHiding() {
@@ -165,6 +168,16 @@ const sliderInit = (classBEM) => {
   }
 
   changeSlidesBecauseSlideHiding();
+
+  const sliderOptions = {
+    swiperContainer,
+    buttonSlidePrev,
+    buttonSlideNext,
+    toggleNextSlide,
+    togglePrevSlide,
+  };
+
+  swipeInit(sliderOptions);
 };
 
 export { sliderInit };

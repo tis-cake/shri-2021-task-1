@@ -52,6 +52,12 @@
   transform: translateX(-50%);
 }
 
+// swiper
+.people__img-wrap,
+.people__name {
+  pointer-events: none;
+}
+
 .people__img-wrap {
   display: block;
   position: relative;
@@ -70,6 +76,7 @@
   filter: grayscale(100%);
 
   transition-duration: @s;
+  touch-action: none
 }
 
 .people__name {

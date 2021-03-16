@@ -129,15 +129,17 @@ const createSlidesMarkup = (data) => {
     slides[i] = createSlideMarkup(minSetSlides[i], maxSetSlides[i], i, selectedUserId);
   }
 
-  const slidesMarkup = slides.join('');
+  return slides.join('');
 
-  return (
-    `
-      <div class="vote__swiper-wrapper">
-        ${slidesMarkup}
-      </div>
-    `
-  );
+  // const slidesMarkup = slides.join('');
+
+  // return (
+  //   `
+  //     <div class="vote__swiper-wrapper">
+  //       ${slidesMarkup}
+  //     </div>
+  //   `
+  // );
 };
 
 const createVoteTemplate = (data) => {
