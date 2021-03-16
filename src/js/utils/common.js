@@ -8,8 +8,12 @@ const getSelectedUserIndex = (selectedUserId, users) => {
   return selectedUserIndex;
 };
 
+const getIntegerNumber = (string) => {
+  return parseInt(string.match(/\d+/), 10);
+};
+
 const cropExtension = (el) => {
   return el.replace(/\.[^/.]+$/, '');
 };
 
-export { getSelectedUserIndex, cropExtension };
+export { getSelectedUserIndex, getIntegerNumber, cropExtension };

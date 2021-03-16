@@ -7,6 +7,7 @@ import { sliderInit } from './components/slider';
 import { createLeadersTemplate } from './components/view/leaders';
 import { createVoteTemplate } from './components/view/vote';
 import { createChartTemplate } from './components/view/chart';
+import { createDiagramTemplate } from './components/view/diagram';
 
 import { renderMarkup } from './utils/render';
 
@@ -21,7 +22,10 @@ const board = document.querySelector('.board');
 // renderMarkup(board, vote);
 // sliderInit('vote');
 
-const chart = createChartTemplate(DATA[7].data);
-renderMarkup(board, chart);
+// const chart = createChartTemplate(DATA[7].data);
+// renderMarkup(board, chart);
+
+const diagram = createDiagramTemplate(DATA[8].data);
+renderMarkup(board, diagram);
 
 colorThemeInit();
