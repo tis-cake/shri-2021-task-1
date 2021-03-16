@@ -107,7 +107,8 @@ const createSlidesMarkup = (data) => {
   const { users, selectedUserId, offset } = data;
 
   if (offset) {
-    users.unshift(users[offset]);
+    const offsetEl = users.splice(offset, 1);
+    users.unshift(...(offsetEl));
   }
 
   const slides = [];
