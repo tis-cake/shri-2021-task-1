@@ -131,16 +131,6 @@ const createSlidesMarkup = (data) => {
   }
 
   return slides.join('');
-
-  // const slidesMarkup = slides.join('');
-
-  // return (
-  //   `
-  //     <div class="vote__swiper-wrapper">
-  //       ${slidesMarkup}
-  //     </div>
-  //   `
-  // );
 };
 
 const createVoteTemplate = (data) => {

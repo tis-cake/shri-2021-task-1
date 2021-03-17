@@ -133,10 +133,6 @@ const createUsersMarkup = (data) => {
   let usersMarkup = users;
   let selectedUserNotIncluded;
 
-  // if (selectedUserId !== null && selectedUserId !== undefined) {
-  //   selectedUserIndex = users.findIndex((user) => user.id === selectedUserId);
-  // }
-
   if (selectedUserIndex > LAST_INDEX) {
     selectedUserNotIncluded = users[selectedUserIndex];
   }
@@ -153,9 +149,7 @@ const createUsersMarkup = (data) => {
   const extraOptions = { emoji, selectedUserIndex, selectedUserNotIncluded };
 
   return usersMarkup
-    .map((el, i) => {
-      return createUserMarkup(el, i, extraOptions);
-    })
+    .map((el, i) => createUserMarkup(el, i, extraOptions))
     .join('');
 };
 
