@@ -1,3 +1,5 @@
+import { Abstract } from './abstract';
+
 import { getIntegerNumber } from '../../utils/common';
 
 const DiagramIconCategory = {
@@ -157,4 +159,10 @@ const createDiagramTemplate = (data) => {
   );
 };
 
-export { createDiagramTemplate };
+class Diagram extends Abstract {
+  getTemplate() {
+    return createDiagramTemplate(this._data);
+  }
+}
+
+export { Diagram };

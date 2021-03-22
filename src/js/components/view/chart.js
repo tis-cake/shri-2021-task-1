@@ -1,3 +1,5 @@
+import { Abstract } from './abstract';
+
 import { cropExtension } from '../../utils/common';
 
 const CHART_MAX_HEIGHT = 70;
@@ -112,4 +114,10 @@ const createChartTemplate = (data) => {
   );
 };
 
-export { createChartTemplate };
+class Chart extends Abstract {
+  getTemplate() {
+    return createChartTemplate(this._data);
+  }
+}
+
+export { Chart };

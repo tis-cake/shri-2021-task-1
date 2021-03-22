@@ -1,3 +1,5 @@
+import { Abstract } from './abstract';
+
 const GraphTime = {
   DAYS: 7,
   HOURS_DAY: 24,
@@ -177,4 +179,10 @@ const createActivityTemplate = (data) => {
   );
 };
 
-export { createActivityTemplate };
+class Activity extends Abstract {
+  getTemplate() {
+    return createActivityTemplate(this._data);
+  }
+}
+
+export { Activity };

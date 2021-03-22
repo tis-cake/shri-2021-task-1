@@ -1,3 +1,5 @@
+import { Abstract } from './abstract';
+
 import { getSelectedUserIndex, cropExtension } from '../../utils/common';
 import { SELECTED_USER_EMOJI } from '../../consts';
 
@@ -177,4 +179,10 @@ const createLeadersTemplate = (data) => {
   );
 };
 
-export { createLeadersTemplate };
+class Leaders extends Abstract {
+  getTemplate() {
+    return createLeadersTemplate(this._data);
+  }
+}
+
+export { Leaders };

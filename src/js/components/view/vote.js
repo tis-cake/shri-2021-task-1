@@ -1,3 +1,5 @@
+import { Abstract } from './abstract';
+
 import { cropExtension } from '../../utils/common';
 import { SELECTED_USER_EMOJI } from '../../consts';
 
@@ -74,8 +76,8 @@ const createSlideMarkup = (minSetSlides, maxSetSlides, slideIndex, selectedUserI
   const extraOptions = { slideIndex, selectedUserId };
 
   const slideClass = (maxSetSlides)
-    ? 'vote__swiper-slide'
-    : 'vote__swiper-slide vote__swiper-slide--hiding';
+    ? 'vote__slider-slide slider__slide'
+    : 'vote__slider-slide slider__slide--hiding';
 
   const usersMarkupMinSet = minSetSlides
     .map((el) => createUserMarkup(el, extraOptions))
@@ -140,7 +142,7 @@ const createVoteTemplate = (data) => {
 
   return (
     `
-      <section class="vote container">
+      <section class="vote slider container" id="vote-slider">
         <div class="board__text-wrap vote__text-wrap">
           <h1 class="board__title vote__title title">
             ${title}
@@ -150,18 +152,18 @@ const createVoteTemplate = (data) => {
           </h2>
         </div>
 
-        <div class="vote__swiper-container" id="vote-swiper">
-          <div class="vote__swiper-wrapper">
+        <div class="vote__slider-container slider__container">
+          <div class="vote__slider-wrapper slider__wrapper">
             ${slidesMarkup}
           </div>
 
-          <button class="vote__swiper-button-prev button button--prev button--disabled" aria-label="Предыдущий слайд" disabled>
+          <button class="vote__slider-button-prev slider__button-prev button button--prev" aria-label="Предыдущий слайд" disabled>
             <svg class="button__icon" width="64" height="64">
               <use xlink:href="assets/images/sprite.svg#button"></use>
             </svg>
           </button>
 
-          <button class="vote__swiper-button-next button button--next" aria-label="Следующий слайд">
+          <button class="vote__slider-button-next slider__button-next button button--next" aria-label="Следующий слайд">
             <svg class="button__icon" width="64" height="64">
               <use xlink:href="assets/images/sprite.svg#button"></use>
             </svg>
@@ -172,4 +174,10 @@ const createVoteTemplate = (data) => {
   );
 };
 
-export { createVoteTemplate };
+class Vote extends Abstract {
+  getTemplate() {
+    return createVoteTemplate(this._data);
+  }
+}
+
+export { Vote };
