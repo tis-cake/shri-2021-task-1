@@ -1,25 +1,13 @@
 import { Swipe } from './swipe';
 
 class Slider {
-  constructor(slider) {
-    // if (typeof slider === 'string') {
-    //   this._slider = document.querySelector(slider);
-    //   this._selector = slider;
-    // }
-
-    // if (typeof slider === 'object') {
-    //   this._slider = slider;
-    //   this._selector = `#${this._slider.querySelector('.slider__container').id}`;
-    // }
-
-    this._slider = slider;
-    this._selector = `#${slider.id}`;
-
-    this._element = document.querySelector(this._selector);
-
+  constructor(sliderElement) {
+    this._element = sliderElement;
     if (!this._element) {
       return false;
     }
+
+    this._selector = `#${this._element.id}`;
 
     this.sliderContainer = this._element.querySelector(`${this._selector} .slider__container`);
     this._sliderWrapper = this.sliderContainer.querySelector(`${this._selector} .slider__wrapper`);
@@ -34,14 +22,15 @@ class Slider {
     // отрицательное значение прячет слайдер вверх
     this._slideTransitionSignPolarity = -1;
     this._slideIndex = 0;
-    this._sliderHeight = this.sliderContainer.offsetHeight;
+    // this._sliderHeight = this.sliderContainer.offsetHeight;
 
     this._slideHidingClass = 'slider__slide--hiding';
     this._slideHiding = this.sliderContainer.querySelector(`${this._selector} .${this._slideHidingClass}`);
 
     this.togglePrevSlide = this.togglePrevSlide.bind(this);
     this.toggleNextSlide = this.toggleNextSlide.bind(this);
-    this._onResize = this._onResize.bind(this);
+    this.boundOnResize = this._onResize.bind(this);
+    // this._onResize = this._onResize.bind(this);
 
     this._swipeComponent = new Swipe(this);
   }
@@ -65,10 +54,17 @@ class Slider {
     // !NB: debounce не добавляю, так как ресайз в
     // инструментах разработчика не важен для пользователя
     document.addEventListener('DOMContentLoaded', () => {
-      window.addEventListener('resize', this._onResize);
+      this._sliderHeight = this.sliderContainer.offsetHeight;
+
+      window.addEventListener('resize', this.boundOnResize);
     });
 
     this._swipeComponent.init();
+  }
+
+  destroy() {
+    window.removeEventListener('resize', this.boundOnResize);
+    this._element = null;
   }
 
   _onResize() {
@@ -164,12 +160,8 @@ class Slider {
 
   // переход слайда
   _setTranslateProperty() {
-    // console.log(this._slideIndex)
-    // console.log(this._sliderHeight)
     const translateProperty = `translateY(${this._slideTransitionSignPolarity * this._slideIndex * this._sliderHeight}px)`;
     this._sliderWrapper.style.transform = translateProperty;
-
-    // console.log(this._sliderWrapper)
   }
 
   // актуально только если количество слайдов на телефоне и десктопе различается

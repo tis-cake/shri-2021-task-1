@@ -1,4 +1,5 @@
 import { Abstract } from './abstract';
+import { Slider } from '../slider/slider';
 
 import { cropExtension } from '../../utils/common';
 import { SELECTED_USER_EMOJI } from '../../consts';
@@ -175,8 +176,25 @@ const createVoteTemplate = (data) => {
 };
 
 class Vote extends Abstract {
+  constructor(data) {
+    super(data);
+
+    this._sliderComponent = new Slider(this.getElement());
+  }
+
   getTemplate() {
     return createVoteTemplate(this._data);
+  }
+
+  removeElement() {
+    super.removeElement();
+
+    this._sliderComponent.destroy();
+    this._sliderComponent = null;
+  }
+
+  initSlider() {
+    this._sliderComponent.init();
   }
 }
 
