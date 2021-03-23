@@ -102,13 +102,15 @@ const createChartTemplate = (data) => {
           <h2 class="board__subtitle chart__subtitle">
             ${subtitle}
           </h2>
-          <ul class="chart__list-stats">
-            ${listStatsMarkup}
-          </ul>
-          <ul class="chart__list-leaders people people--row">
-            ${listLeadersMarkup}
-          </ul>
         </div>
+        <ul class="chart__list-stats">
+          ${listStatsMarkup}
+
+          <li class="chart__stat chart__stat--hidden"></li>
+        </ul>
+        <ul class="chart__list-leaders people people--row">
+          ${listLeadersMarkup}
+        </ul>
       </section>
     `
   );
