@@ -53,11 +53,10 @@ class Slider {
     // отслеживаем ресайз окна
     // !NB: debounce не добавляю, так как ресайз в
     // инструментах разработчика не важен для пользователя
-    document.addEventListener('DOMContentLoaded', () => {
-      this._sliderHeight = this.sliderContainer.offsetHeight;
-
-      window.addEventListener('resize', this.boundOnResize);
-    });
+    // document.addEventListener('DOMContentLoaded', () => {
+    this._sliderHeight = this.sliderContainer.offsetHeight;
+    window.addEventListener('resize', this.boundOnResize);
+    // });
 
     this._swipeComponent.init();
   }
