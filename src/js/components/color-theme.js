@@ -1,23 +1,26 @@
-const body = document.querySelector('body');
-const themeToggle = body.querySelector('.colors-theme-toggle');
-const darkClass = 'theme_dark';
-const lightClass = 'theme_light';
+import { ThemeColors, DefaultSetupOptions } from '../consts';
 
-let isDefaultTheme = true;
+const defaultClass = `theme_${DefaultSetupOptions.THEME_DEFAULT}`;
+const primaryClass = `theme_${ThemeColors.PRIMARY}`;
+const secondaryClass = `theme_${ThemeColors.SECONDARY}`;
+const body = document.querySelector('body');
+body.classList.add(defaultClass);
 
 const favicons = document.querySelectorAll('.favicon');
 const faviconMsapplication = document.querySelector('.favicon-msapplication');
+
+let isDefaultTheme = true;
 
 const changeFavicon = () => {
   let oldColor;
   let newColor;
 
   if (isDefaultTheme) {
-    oldColor = 'dark';
-    newColor = 'light';
+    oldColor = `${ThemeColors.PRIMARY}`;
+    newColor = `${ThemeColors.SECONDARY}`;
   } else {
-    oldColor = 'light';
-    newColor = 'dark';
+    oldColor = `${ThemeColors.SECONDARY}`;
+    newColor = `${ThemeColors.PRIMARY}`;
   }
 
   for (const favicon of favicons) {
@@ -29,18 +32,23 @@ const changeFavicon = () => {
   isDefaultTheme = !isDefaultTheme;
 };
 
-const colorThemeInit = () => {
-  themeToggle.addEventListener('click', () => {
-    if (body.classList.contains(darkClass)) {
-      body.classList.remove(darkClass);
-      body.classList.add(lightClass);
-    } else {
-      body.classList.remove(lightClass);
-      body.classList.add(darkClass);
-    }
+// проверяем - соответствуют ли фавиконки дефолтной цветовой теме
+const isDefaultThemeFavicons = Boolean(favicons[0].href.match(new RegExp(`${DefaultSetupOptions.THEME_DEFAULT}`)));
+if (!isDefaultThemeFavicons) {
+  isDefaultTheme = false;
+  changeFavicon();
+}
 
-    changeFavicon();
-  });
+const changeColorTheme = () => {
+  if (isDefaultTheme) {
+    body.classList.remove(primaryClass);
+    body.classList.add(secondaryClass);
+  } else {
+    body.classList.remove(secondaryClass);
+    body.classList.add(primaryClass);
+  }
+
+  changeFavicon();
 };
 
-export { colorThemeInit };
+export { changeColorTheme };
