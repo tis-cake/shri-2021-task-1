@@ -16,9 +16,9 @@ const isTarget = isDev ? 'web' : 'browserslist';
 
 const filename = (extension) => {
   const commonName = 'stories';
-  // return `${commonName}.${extension}`;
-  return isProd ? `${commonName}.${extension}` : `${commonName}.[hash].${extension}`;
+  return `${commonName}.${extension}`;
 
+  // return isProd ? `${commonName}.${extension}` : `${commonName}.[hash].${extension}`;
   // return isDev ? `[name].${extension}` : `[name].[hash].${extension}`;
 };
 
@@ -101,7 +101,8 @@ module.exports = {
 
     new HTMLWebpackPlugin({
       template: './index.html',
-      scriptLoading: 'blocking',
+      // scriptLoading: 'blocking',
+      inject: false,
     }),
     new MiniCssExtractPlugin({
       filename: filename('css'),

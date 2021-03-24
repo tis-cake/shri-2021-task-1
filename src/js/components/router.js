@@ -14,12 +14,12 @@ let currentSlide = SearchParams.SLIDE_DEFAULT;
 let currentTheme = SearchParams.THEME_DEFAULT;
 
 class Router {
-  constructor(renderTemplate) {
+  constructor(renderSlide) {
     this._hash = (
       `/?${SearchParams.SLIDE}=${SearchParams.SLIDE_DEFAULT}&${SearchParams.THEME}=${SearchParams.THEME_DEFAULT}`
     );
 
-    this._renderTemplate = renderTemplate;
+    this._renderSlide = renderSlide;
     this._changeColorTheme = changeColorTheme;
 
     this._onHashChange = this._onHashChange.bind(this);
@@ -27,10 +27,10 @@ class Router {
 
   init() {
     const [slideAlias, slideData] = Object.values(DATA[`${currentSlide}`]);
-    this._renderTemplate(slideAlias, slideData);
+    this._renderSlide(slideAlias, slideData);
 
-    // window.location.hash = this._hash;
-    // window.addEventListener('hashchange', this._onHashChange);
+    window.location.hash = this._hash;
+    window.addEventListener('hashchange', this._onHashChange);
   }
 
   _onHashChange() {
@@ -49,7 +49,7 @@ class Router {
           currentSlide = slideValue;
 
           const [slideAlias, slideData] = Object.values(DATA[`${currentSlide}`]);
-          this._renderTemplate(slideAlias, slideData);
+          this._renderSlide(slideAlias, slideData);
         }
       }
 
