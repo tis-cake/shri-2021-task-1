@@ -29,8 +29,8 @@ class Router {
     const [slideAlias, slideData] = Object.values(DATA[`${currentSlide}`]);
     this._renderTemplate(slideAlias, slideData);
 
-    window.location.hash = this._hash;
-    window.addEventListener('hashchange', this._onHashChange);
+    // window.location.hash = this._hash;
+    // window.addEventListener('hashchange', this._onHashChange);
   }
 
   _onHashChange() {

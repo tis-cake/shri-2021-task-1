@@ -1,5 +1,7 @@
 import { Abstract } from './abstract';
 
+import { cropExtension } from '../../utils/common';
+
 const CHART_MAX_HEIGHT = 70;
 
 const createLeaderMarkup = (leader, index) => {
@@ -7,11 +9,21 @@ const createLeaderMarkup = (leader, index) => {
 
   const placeNumber = index + 1;
 
+  const avatarCroppedName = cropExtension(avatar);
+
   return (
     `
       <li class="chart__leader people__item">
         <span class="people__img-wrap">
           <picture>
+            <source
+              type="image/webp"
+              srcset="assets/images/1x/person/${avatarCroppedName}.webp 1x,
+                      assets/images/2x/person/${avatarCroppedName}.webp 2x,
+                      assets/images/3x/person/${avatarCroppedName}.webp 3x,
+                      assets/images/4x/person/${avatarCroppedName}.webp 4x"
+            >
+
             <img
               class="people__img"
               src="assets/images/1x/person/${avatar}}"
