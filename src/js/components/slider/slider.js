@@ -30,7 +30,6 @@ class Slider {
     this.togglePrevSlide = this.togglePrevSlide.bind(this);
     this.toggleNextSlide = this.toggleNextSlide.bind(this);
     this.boundOnResize = this._onResize.bind(this);
-    // this._onResize = this._onResize.bind(this);
 
     this._swipeComponent = new Swipe(this);
   }
@@ -175,13 +174,13 @@ class Slider {
         this._doAfterIndexChange();
       }
 
+      // скрывающийся слайд добавлен в массив слайдов и скрыт
       if (isHidingSlideInSlides && isDisplayNone) {
-        // console.log('добавлен в массив и скрыт');
         this._slides.splice(this._slides.length - 1, 1);
       }
 
+      // скрывающийся слайд не добавлен в массив слайдов, но показан
       if (!isHidingSlideInSlides && !isDisplayNone) {
-        // console.log('не добавлен в массив и показан');
         this._slides.push(this._slideHiding);
       }
 

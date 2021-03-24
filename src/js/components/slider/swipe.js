@@ -20,7 +20,6 @@ class Swipe {
 
   _onSwipeDown(evt) {
     const isButtonNavigation = (evt.target === this._buttonSlidePrev || evt.target === this._buttonSlideNext);
-    // const isPeopleLink = (evt.target.tagName === 'A' || evt.target.tagName === 'BUTTON');
 
     if (isButtonNavigation) {
       return;

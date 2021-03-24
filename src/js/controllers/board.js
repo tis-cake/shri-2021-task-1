@@ -45,8 +45,6 @@ const SlidesFunctions = {
     render(board, voteComponent.getElement());
 
     voteComponent.initSlider();
-    // const sliderComponent = new Slider(voteComponentElement);
-    // sliderComponent.init();
 
     renderedComponent = voteComponent;
   },
@@ -74,54 +72,3 @@ class BoardController {
 }
 
 export { BoardController };
-
-// const SearchParams = {
-//   SLIDE: 'slide',
-//   THEME: 'theme',
-//   SLIDE_DEFAULT: DefaultSetupOptions.SLIDE_DEFAULT,
-//   THEME_DEFAULT: DefaultSetupOptions.THEME_DEFAULT,
-// };
-
-// let currentSlide = SearchParams.SLIDE_DEFAULT;
-// let currentTheme = SearchParams.THEME_DEFAULT;
-
-// // let slideAlias = Object.values(DATA[`${currentSlide}`])[0];
-// // let slideData = Object.values(DATA[`${currentSlide}`])[1];
-// let [slideAlias, slideData] = Object.values(DATA[`${currentSlide}`]);
-// renderTemplate(slideAlias, slideData);
-
-// window.location.hash = (
-//   `/?${SearchParams.SLIDE}=${SearchParams.SLIDE_DEFAULT}&${SearchParams.THEME}=${SearchParams.THEME_DEFAULT}`
-// );
-
-// window.addEventListener('hashchange', () => {
-//   const hashParam = window.location.hash;
-
-//   const slideValue = hashParam.match(/slide=([\w]*)/)[1];
-//   const themeValue = hashParam.match(/theme=([\w]*)/)[1];
-
-//   if (slideValue && themeValue) {
-//     const isSlideExisting = (slideValue < DATA.length);
-//     // const isThemeExisting = (themeColors.some((color) => color === themeValue));
-//     const isThemeExisting = (Object.values(ThemeColors).some((color) => color === themeValue));
-
-//     if (isSlideExisting) {
-//       if (currentSlide !== slideValue) {
-//         currentSlide = slideValue;
-
-//         [slideAlias, slideData] = Object.values(DATA[`${currentSlide}`]);
-//         renderTemplate(slideAlias, slideData);
-//       }
-//     }
-
-//     if (isThemeExisting) {
-//       if (currentTheme !== themeValue) {
-//         // console.log(currentTheme, themeValue)
-
-//         currentTheme = themeValue;
-
-//         changeColorTheme();
-//       }
-//     }
-//   }
-// });

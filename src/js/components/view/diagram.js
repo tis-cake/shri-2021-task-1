@@ -68,7 +68,7 @@ const createCategoryMarkup = (category, index) => {
           ${title}
         </p>
         <p class="diagram__value-change">
-          + ${differenceTextNumber}
+          +${differenceTextNumber}
         </p>
         <p class="diagram__value-current">
           ${valueTextNumber}

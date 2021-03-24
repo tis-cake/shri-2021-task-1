@@ -93,14 +93,6 @@ const createGraphsHalfMarkup = (graphs) => {
   }
 
   return graphsHalfMarkup.join('');
-
-  // return graphs.map((graphDay) => {
-  //   const graphsHalf = getGraphsHalf(graphDay);
-
-  //   return graphsHalf.map((graphHour) => {
-  //     return createGraphMarkup(graphHour);
-  //   }).join('');
-  // }).join('');
 };
 
 const createGraphsFullMarkup = (graphs) => {

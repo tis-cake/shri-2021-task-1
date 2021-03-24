@@ -16,7 +16,6 @@
 }
 
 .activity__text-wrap {
-  // margin-bottom: 54px;
   margin-bottom: 50px;
   margin-bottom: 13.33vw;
 }
@@ -25,7 +24,6 @@
 
 .activity__subtitle {}
 
-// NEW
 .activity__list-graphs {
   // --length-static: 43.7px;
   --length-dynamic: 11.653vw;
@@ -47,16 +45,6 @@
   }
 }
 
-// OLD
-// .activity__list-graphs {
-//   margin-bottom: 24px;
-
-//   &--tablet {
-//     display: none;
-//   }
-// }
-
-// NEW
 .activity__graph {
   position: relative;
   width: 100%;
@@ -64,36 +52,15 @@
   // margin-top: 4px;
   margin-top: 1.066vw;
 
-  &:nth-child(2n) {
+  &:nth-of-type(2n) {
     // left: 22px;
     left: 5.866vw;
   }
 
   @graph-count: 24;
   .generate-z-index();
-  // &:nth-child(24n+1) { .activity__picture { z-index: 1; }}
+  // &:nth-of-type(24n+1) { .activity__picture { z-index: 1; }}
 }
-
-// OLD
-// .activity__graph {
-//   --length-static: 43.7px;
-//   --length-dynamic: 11.653vw;
-
-//   position: relative;
-//   display: grid;
-//   grid-template-columns: repeat(7, var(--length-dynamic));
-//   margin-top: -7.2vw;
-
-//   &:first-child {
-//     top: 0;
-//     margin-top: 0;
-//   }
-
-//   &:nth-child(2n) {
-//     // left: 22px;
-//     left: 5.866vw;
-//   }
-// }
 
 .activity__figure-wrap {
   display: block;
@@ -117,15 +84,11 @@
   }
 
   &--mid {
-    // height: 52px;
-    // height: 13.866vw;
     // height: 52.5px;
     height: 14vw;
   }
 
   &--max {
-    // height: 75px;
-    // height: 19.2vw;
     // height: 73.6px;
     height: 19.6vw;
   }
@@ -147,7 +110,6 @@
 .activity__bar-color {
   display: block;
   position: relative;
-  // width: 50px;
   width: 100%;
   height: 12px;
   border-radius: 2px;
@@ -217,7 +179,6 @@
   }
 
   .activity__list-graphs {
-    // margin-bottom: 46px;
     margin-bottom: 78px;
   }
 
@@ -237,11 +198,9 @@
   }
 
   .activity__text-wrap {
-    // margin-bottom: 62px;
     margin-bottom: 50px;
   }
 
-  // NEW
   .activity__list-graphs {
     --length-static: 34px;
 
@@ -258,49 +217,23 @@
     }
   }
 
-  // OLD
-  // .activity__list-graphs {
-  //   margin-bottom: 20px;
-
-  //   &--full {
-  //     display: none;
-  //   }
-
-  //   &--half {
-  //     display: grid;
-  //   }
-  // }
-
-  // NEW
   .activity__graph {
     height: var(--length-static);
     margin-top: 4px;
 
-    &:nth-child(2n) {
+    &:nth-of-type(2n) {
       left: 0;
     }
 
-    &:nth-child(7n + 2),
-    &:nth-child(7n + 4),
-    &:nth-child(7n + 6) {
+    &:nth-of-type(7n + 2),
+    &:nth-of-type(7n + 4),
+    &:nth-of-type(7n + 6) {
       left: 18px;
     }
 
     @graph-count: 7;
     .generate-z-index();
   }
-
-  // OLD
-  // .activity__graph {
-  //   --length-static: 34px;
-
-  //   grid-template-columns: repeat(12, var(--length-static));
-  //   margin-top: -21px;
-
-  //   &:nth-child(2n) {
-  //     left: 17px;
-  //   }
-  // }
 
   .activity__figure-wrap {
     height: var(--length-static);
@@ -345,7 +278,6 @@
     margin-bottom: 56px;
   }
   .activity__list-graphs {
-    // margin-bottom: 28px;
     margin-bottom: 54px;
   }
 }
