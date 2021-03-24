@@ -2,7 +2,9 @@ import { Swipe } from './swipe';
 
 class Slider {
   constructor(sliderElement) {
-    this._element = sliderElement;
+    // this._element = sliderElement;
+    this._element = document.querySelector(`#${sliderElement.id}`);
+
     if (!this._element) {
       return false;
     }
