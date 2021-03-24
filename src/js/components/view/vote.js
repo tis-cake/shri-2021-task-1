@@ -1,7 +1,6 @@
 import { Abstract } from './abstract';
 import { Slider } from '../slider/slider';
 
-import { cropExtension } from '../../utils/common';
 import { SELECTED_USER_EMOJI } from '../../consts';
 
 const USER_COUNT_IN_SLIDE_MOBILE = 8;
@@ -22,8 +21,6 @@ const sliceUsersIntoSlides = (users, userCountInSlide) => {
 const createUserMarkup = (user, options) => {
   const { id, name, avatar } = user;
   const { slideIndex, selectedUserId } = options;
-
-  const avatarCroppedName = cropExtension(avatar);
 
   const isSelectedUser = (id === selectedUserId);
 
@@ -46,14 +43,6 @@ const createUserMarkup = (user, options) => {
           <span class="people__img-wrap">
             <span class="people__emoji emoji">${isSelectedUserEmoji}</span>
             <picture>
-              <source
-                type="image/webp"
-                srcset="assets/images/1x/person/${avatarCroppedName}.webp 1x,
-                        assets/images/2x/person/${avatarCroppedName}.webp 2x,
-                        assets/images/3x/person/${avatarCroppedName}.webp 3x,
-                        assets/images/4x/person/${avatarCroppedName}.webp 4x"
-              >
-
               <img
                 class="people__img"
                 src="assets/images/1x/person/1.jpg"

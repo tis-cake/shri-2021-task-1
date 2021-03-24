@@ -1,6 +1,6 @@
 import { Abstract } from './abstract';
 
-import { getSelectedUserIndex, cropExtension } from '../../utils/common';
+import { getSelectedUserIndex } from '../../utils/common';
 import { SELECTED_USER_EMOJI } from '../../consts';
 
 const MAX_USERS_COUNT = 5;
@@ -11,22 +11,12 @@ const createUserNotIncludedMarkup = (user, index) => {
 
   const placeNumber = index + 1;
 
-  const avatarCroppedName = cropExtension(avatar);
-
   return (
     `
       <span class="leaders__not-included-wrap people__not-included-wrap">
         <span class="people__img-wrap">
           <span class="people__emoji emoji">👍</span>
           <picture>
-            <source
-              type="image/webp"
-              srcset="assets/images/1x/person/${avatarCroppedName}.webp 1x,
-                      assets/images/2x/person/${avatarCroppedName}.webp 2x,
-                      assets/images/3x/person/${avatarCroppedName}.webp 3x,
-                      assets/images/4x/person/${avatarCroppedName}.webp 4x"
-            >
-
             <img
               class="people__img"
               src="assets/images/1x/person/11.jpg"
@@ -81,22 +71,12 @@ const createUserMarkup = (user, index, options) => {
     ? SELECTED_USER_EMOJI
     : '';
 
-  const avatarCroppedName = cropExtension(avatar);
-
   return (
     `
       <li class="leaders__item people__item">
         <span class="people__img-wrap">
           <span class="people__emoji emoji">${isWinnerEmoji}${isSelectedUserEmoji}</span>
           <picture>
-            <source
-              type="image/webp"
-              srcset="assets/images/1x/person/${avatarCroppedName}.webp 1x,
-                      assets/images/2x/person/${avatarCroppedName}.webp 2x,
-                      assets/images/3x/person/${avatarCroppedName}.webp 3x,
-                      assets/images/4x/person/${avatarCroppedName}.webp 4x"
-            >
-
             <img
               class="people__img"
               src="assets/images/1x/person/${avatar}"
