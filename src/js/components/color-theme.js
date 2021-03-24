@@ -1,8 +1,14 @@
-import { ThemeColors, DefaultSetupOptions } from '../consts';
+import { ThemeColors, DefaultSetupOptions, faviconsPaths } from '../consts';
+import { renderMarkup } from '../utils/render';
 
 const defaultClass = `theme_${DefaultSetupOptions.THEME_DEFAULT}`;
 const primaryClass = `theme_${ThemeColors.PRIMARY}`;
 const secondaryClass = `theme_${ThemeColors.SECONDARY}`;
+
+const head = document.querySelector('head');
+const faviconsTemplate = faviconsPaths.join('');
+renderMarkup(head, faviconsTemplate);
+
 const body = document.querySelector('body');
 body.classList.add(defaultClass);
 
