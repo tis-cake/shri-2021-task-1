@@ -120,21 +120,21 @@ module.exports = {
         },
       ],
     }),
-    new ImageminWebpackPlugin({
-      test: /\.(png|jpe?g|svg|gif|webp)$/,
-      cacheFolder: path.resolve(__dirname, 'src/assets/cache'),
-      // optipng: { optimizationLevel: 3 },
-      pngquant: { quality: '95-100' },
-      jpegtran: { quality: 80, progressive: true },
-      gifsicle: { interlaced: true },
-      svgo: {
-        plugins: [
-          { removeUselessDefs: false },
-          { cleanupIDs: false },
-          // { removeViewBox: false },
-        ]
-      },
-    }),
+    // new ImageminWebpackPlugin({
+    //   test: /\.(png|jpe?g|svg|gif|webp)$/,
+    //   cacheFolder: path.resolve(__dirname, 'src/assets/cache'),
+    //   // optipng: { optimizationLevel: 3 },
+    //   pngquant: { quality: '95-100' },
+    //   jpegtran: { quality: 80, progressive: true },
+    //   gifsicle: { interlaced: true },
+    //   svgo: {
+    //     plugins: [
+    //       { removeUselessDefs: false },
+    //       { cleanupIDs: false },
+    //       // { removeViewBox: false },
+    //     ]
+    //   },
+    // }),
   ],
   module: {
     rules: [
