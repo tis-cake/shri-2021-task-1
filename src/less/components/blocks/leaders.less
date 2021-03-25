@@ -62,20 +62,24 @@
   &:nth-of-type(4) {
     left: calc(-1 * var(--gap-secondary));
     .leaders__stats-value,
-    .people__img-wrap,
+    .people__img-wrap {
+      margin-left: var(--gap-secondary);
+    }
     .people__name,
     .people__commit-count {
-      margin-left: var(--gap-secondary);
+      margin-left: calc(var(--gap-secondary) + 1px);
     }
   }
 
   &:nth-of-type(3),
   &:nth-of-type(5) {
     .leaders__stats-value,
-    .people__img-wrap,
+    .people__img-wrap {
+      margin-right: var(--gap-secondary);
+    }
     .people__name,
     .people__commit-count {
-      margin-right: var(--gap-secondary);
+      margin-right: calc(var(--gap-secondary) + 1px);
     }
   }
 
@@ -112,7 +116,8 @@
   height: 100%;
   margin-top: 16px;
   // margin-top: 15px;
-  padding-top: 18px;
+  // padding-top: 18px;
+  padding-top: 17px;
 
   background-image: @bg-stat-secondary;
   box-shadow: @shadow-stat-secondary;
