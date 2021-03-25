@@ -5,12 +5,16 @@ const defaultClass = `theme_${DefaultSetupOptions.THEME_DEFAULT}`;
 const primaryClass = `theme_${ThemeColors.PRIMARY}`;
 const secondaryClass = `theme_${ThemeColors.SECONDARY}`;
 
-const head = document.querySelector('head');
-const faviconsTemplate = faviconsPaths.join('');
-renderMarkup(head, faviconsTemplate);
-
 const body = document.querySelector('body');
 body.classList.add(defaultClass);
+
+// добавлять фавиконки, если они отсутствуют
+const isFaviconExisting = Boolean(document.querySelector('.favicon'));
+if (!isFaviconExisting) {
+  const head = document.querySelector('head');
+  const faviconsTemplate = faviconsPaths.join('');
+  renderMarkup(head, faviconsTemplate);
+}
 
 const favicons = document.querySelectorAll('.favicon');
 const faviconMsapplication = document.querySelector('.favicon-msapplication');

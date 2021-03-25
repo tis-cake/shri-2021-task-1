@@ -6,7 +6,6 @@ html {
   --color-tertiary: var(--color-grey);
   --color-quaternary: var(--color-white-light);
 
-  --color-bg-main: var(--color-black);
   --color-bg-main-gradient: var(--gradient-main);
   --color-bg-stat-primary: var(--gradient-gold);
   --color-bg-stat-secondary: var(--gradient-dark);
@@ -112,6 +111,11 @@ html {
   --shadow-graph-mid: var(--shadow-mid-light);
   --shadow-graph-min: var(--shadow-min-light);
 
+  body {
+    background-color: var(--color-white);
+    background-image: none;
+  }
+
   .people__img {
     filter: none;
   }
@@ -139,7 +143,6 @@ html {
 @color-tertiary: var(--color-tertiary);
 @color-quaternary: var(--color-quaternary);
 
-@bg-main-color: var(--color-bg-main);
 @bg-main-gradient: var(--color-bg-main-gradient);
 @bg-stat-primary: var(--color-bg-stat-primary);
 @bg-stat-secondary: var(--color-bg-stat-secondary);
