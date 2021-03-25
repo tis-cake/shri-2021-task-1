@@ -2,7 +2,8 @@ import { Abstract } from './abstract';
 
 import { cropExtension } from '../../utils/common';
 
-const CHART_MAX_HEIGHT = 70;
+const CHART_MAX_HEIGHT_PERCENT = 70;
+const CHART_MAX_EMPTY_COUNT = 2;
 
 const createLeaderMarkup = (leader, index) => {
   const { name, avatar, valueText } = leader;
@@ -54,17 +55,21 @@ const createListLeadersMarkup = (leaders) => {
 const createStatMarkup = (stat, maxValue) => {
   const { title, value, active } = stat;
 
+  const heightPercent = `${Math.floor((value * CHART_MAX_HEIGHT_PERCENT) / maxValue)}%`;
+
   const activeClass = active
-    ? 'chart__stat chart__stat--gold'
+    ? 'chart__stat chart__stat--active'
     : 'chart__stat';
 
-  const height = `${Math.floor((value * CHART_MAX_HEIGHT) / maxValue)}%`;
+  const emptyClass = (heightPercent === '0%')
+    ? 'chart__stat--empty'
+    : '';
 
   return (
     `
-      <li class="${activeClass}" style="height: ${height}">
-        <p class="chart__amount-commits subtitle">${title}</p>
-        <p class="chart__sprint-number">${value}</p>
+      <li class="${activeClass} ${emptyClass}" style="height: ${heightPercent}">
+        <p class="chart__amount-commits subtitle">${value}</p>
+        <p class="chart__sprint-number">${title}</p>
       </li>
     `
   );
@@ -72,13 +77,18 @@ const createStatMarkup = (stat, maxValue) => {
 
 const createListStatsMarkup = (stats) => {
   const statsReverse = [];
-  let maxValue = 0;
 
-  for (let i = 0; i < stats.length; i++) {
-    if (maxValue < stats[i].value) {
-      maxValue = stats[i].value;
+  // удаляем излишки пустых колонок
+  const activeIndex = stats.findIndex((el) => el.active === true);
+  const statsSliced = stats.slice(0, activeIndex + (CHART_MAX_EMPTY_COUNT + 1));
+
+  // реверсируем и находим максимальное значение
+  let maxValue = 0;
+  for (let i = 0; i < statsSliced.length; i++) {
+    if (maxValue < statsSliced[i].value) {
+      maxValue = statsSliced[i].value;
     }
-    statsReverse[i] = stats[(stats.length - 1) - i];
+    statsReverse[i] = statsSliced[(statsSliced.length - 1) - i];
   }
 
   return statsReverse

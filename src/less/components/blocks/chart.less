@@ -75,9 +75,15 @@
     }
   }
 
-  &--gold {
+  &--active {
     background-image: @bg-stat-quaternary;
     box-shadow: @shadow-stat-primary;
+  }
+
+  &--empty {
+    .chart__amount-commits {
+      display: none;
+    }
   }
 }
 

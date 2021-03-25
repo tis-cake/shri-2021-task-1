@@ -4,7 +4,8 @@ import { getSelectedUserIndex, cropExtension } from '../../utils/common';
 import { SELECTED_USER_EMOJI } from '../../consts';
 
 const MAX_USERS_COUNT = 5;
-const LAST_INDEX = MAX_USERS_COUNT - 1;
+const LAST_INDEX_DESKTOP = MAX_USERS_COUNT - 1;
+const LAST_INDEX_MOBILE = 2;
 
 const createUserNotIncludedMarkup = (user, index) => {
   const { name, avatar, valueText } = user;
@@ -54,23 +55,25 @@ const createUserNotIncludedMarkup = (user, index) => {
 
 const createUserMarkup = (user, index, options) => {
   const { name, avatar, valueText } = user;
-  const { emoji, selectedUserNotIncluded } = options;
+  const { emoji, selectedUser } = options;
   let { selectedUserIndex } = options;
 
   let placeNumber = index + 1;
 
   let userNotIncludedMarkup;
 
-  if (selectedUserNotIncluded) {
+  if (selectedUser) {
+    // под первое место рендерим выбранного пользователя, если он не попал в топ 3
     if (index === 0) {
-      userNotIncludedMarkup = createUserNotIncludedMarkup(selectedUserNotIncluded, selectedUserIndex);
+      userNotIncludedMarkup = createUserNotIncludedMarkup(selectedUser, selectedUserIndex);
     }
 
-    if (index === LAST_INDEX) {
+    // если это последний элемент на десктопе
+    if (index === LAST_INDEX_DESKTOP && selectedUserIndex >= LAST_INDEX_DESKTOP) {
       placeNumber = selectedUserIndex + 1;
-    }
 
-    selectedUserIndex = LAST_INDEX;
+      selectedUserIndex = LAST_INDEX_DESKTOP;
+    }
   }
 
   const isWinnerEmoji = (index === 0)
@@ -132,23 +135,27 @@ const createUsersMarkup = (data) => {
   const { emoji, users, selectedUserId } = data;
 
   const selectedUserIndex = getSelectedUserIndex(selectedUserId, users);
-  let usersMarkup = users;
-  let selectedUserNotIncluded;
+  const isSelectedUserIncluded = (selectedUserIndex > LAST_INDEX_MOBILE && selectedUserIndex <= LAST_INDEX_DESKTOP);
+  const isSelectedUserNotIncluded = (selectedUserIndex > LAST_INDEX_DESKTOP);
 
-  if (selectedUserIndex > LAST_INDEX) {
-    selectedUserNotIncluded = users[selectedUserIndex];
+  let selectedUser;
+  let usersMarkup = users;
+
+  if (isSelectedUserIncluded || isSelectedUserNotIncluded) {
+    selectedUser = users[selectedUserIndex];
   }
 
   if (users.length > MAX_USERS_COUNT) {
     usersMarkup = users.slice(0, MAX_USERS_COUNT);
   }
 
-  if (selectedUserNotIncluded) {
-    usersMarkup = usersMarkup.slice(0, LAST_INDEX);
-    usersMarkup.push(selectedUserNotIncluded);
+  // если выбранный пользователь не в топ 5 - добавить на 5 место
+  if (isSelectedUserNotIncluded) {
+    usersMarkup = usersMarkup.slice(0, LAST_INDEX_DESKTOP);
+    usersMarkup.push(selectedUser);
   }
 
-  const extraOptions = { emoji, selectedUserIndex, selectedUserNotIncluded };
+  const extraOptions = { emoji, selectedUserIndex, selectedUser };
 
   return usersMarkup
     .map((el, i) => createUserMarkup(el, i, extraOptions))
