@@ -55,7 +55,7 @@ const createListLeadersMarkup = (leaders) => {
 const createStatMarkup = (stat, maxValue) => {
   const { title, value, active } = stat;
 
-  const heightPercent = `${Math.round((value * CHART_MAX_HEIGHT_PERCENT) / maxValue)}%`;
+  const heightPercent = `${((value * CHART_MAX_HEIGHT_PERCENT) / maxValue)}%`;
 
   const activeClass = active
     ? 'chart__stat chart__stat--active'
