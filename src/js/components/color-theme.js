@@ -1,12 +1,12 @@
 import { ThemeColors, DefaultSetupOptions, faviconsPaths } from '../consts';
 import { renderMarkup } from '../utils/render';
 
-const defaultClass = `theme_${DefaultSetupOptions.THEME_DEFAULT}`;
 const primaryClass = `theme_${ThemeColors.PRIMARY}`;
 const secondaryClass = `theme_${ThemeColors.SECONDARY}`;
 
 const body = document.querySelector('body');
-body.classList.add(defaultClass);
+body.classList.remove(secondaryClass);
+body.classList.add(primaryClass);
 
 // добавлять фавиконки, если они отсутствуют
 const isFaviconExisting = Boolean(document.querySelector('.favicon'));

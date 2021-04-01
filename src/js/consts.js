@@ -6,12 +6,12 @@ const RenderPosition = {
 };
 
 const ThemeColors = {
-  PRIMARY: 'dark',
-  SECONDARY: 'light',
+  PRIMARY: 'light',
+  SECONDARY: 'dark',
 };
 
 const DefaultSetupOptions = {
-  SLIDE_DEFAULT: 9,
+  SLIDE_DEFAULT: 8,
   THEME_DEFAULT: ThemeColors.PRIMARY,
 };
 
