@@ -22,7 +22,8 @@ const getGraphsHalf = (graphs) => {
   for (let i = 0; i < graphs.length; i++) {
     const valueCurrent = graphs[i];
     const valueNext = graphs[i + 1];
-    const arithmeticMean = Math.round((valueCurrent + valueNext) / 2);
+    // const arithmeticMean = Math.round((valueCurrent + valueNext) / 2);
+    const arithmeticMean = valueCurrent + valueNext;
 
     graphsHalf.push(arithmeticMean);
 
