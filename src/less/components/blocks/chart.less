@@ -79,6 +79,10 @@
   &--active {
     background-image: @bg-stat-quaternary;
     box-shadow: @shadow-stat-primary;
+
+    .chart__amount-commits {
+      color: @color-primary;
+    }
   }
 
   &--empty {
@@ -93,9 +97,10 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-
   width: auto;
+
   text-align: center;
+  color: @color-secondary;
 
   .no-select;
 }
