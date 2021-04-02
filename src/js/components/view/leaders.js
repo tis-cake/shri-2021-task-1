@@ -171,12 +171,8 @@ const createLeadersTemplate = (data) => {
     `
       <section class="leaders container">
         <div class="board__text-wrap leaders__text-wrap">
-          <h1 class="board__title leaders__title title">
-            ${title}
-          </h1>
-          <h2 class="board__subtitle leaders__subtitle">
-            ${subtitle}
-          </h2>
+          <h1 class="board__title leaders__title title">${title}</h1>
+          <h2 class="board__subtitle leaders__subtitle">${subtitle}</h2>
         </div>
 
         <ul class="leaders__list people">
