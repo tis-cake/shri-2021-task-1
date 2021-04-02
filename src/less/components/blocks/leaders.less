@@ -29,8 +29,7 @@
 
   justify-content: center;
   align-items: stretch;
-  // margin-top: 150px;
-  margin-top: 151px;
+  margin-top: 130px;
   padding-top: 20px;
 }
 
@@ -151,6 +150,8 @@
 @media only screen and (min-width: @width-phone-middle) {
   .leaders__list {
     grid-template-columns: 104px 120px 104px;
+    // margin-top: 150px;
+    margin-top: 151px;
     padding-top: 30px;
   }
 
@@ -169,8 +170,7 @@
   .leaders__list {
     grid-template-columns: 104px 104px 120px 104px 104px;
     grid-template-areas: 'fifth third first second fourth';
-    // margin-top: 75px;
-    margin-top: 76px;
+    margin-top: 90px;
   }
 
   .leaders__stats {
@@ -210,5 +210,12 @@
   .leaders__not-included-wrap,
   .leaders__stats-value--not-included {
     display: none;
+  }
+}
+
+@media only screen and (min-width: @width-tablet-middle) {
+  .leaders__list {
+    // margin-top: 75px;
+    margin-top: 76px;
   }
 }
