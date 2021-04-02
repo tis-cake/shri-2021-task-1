@@ -12,7 +12,8 @@ const ThemeColors = {
 
 const DefaultSetupOptions = {
   // SLIDE_DEFAULT: 0,
-  SLIDE_DEFAULT: 6,
+  // SLIDE_DEFAULT: 6,
+  SLIDE_DEFAULT: 3,
   THEME_DEFAULT: ThemeColors.PRIMARY,
 };
 
