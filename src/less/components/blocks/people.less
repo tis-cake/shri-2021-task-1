@@ -8,20 +8,12 @@
     text-align: center;
   }
 
-  // &__link,
-  // &__not-included-wrap {
-  //   .people__emoji {
-  //     top: -22px;
-  //   }
-  // }
-
   &--row {
     .people__item {
       display: grid;
       grid-template-columns: 40px 1fr;
       grid-template-rows: 1fr 1fr;
       column-gap: 14px;
-      // column-gap: 13px;
       text-align: left;
     }
     .people__img-wrap {
@@ -38,13 +30,10 @@
     }
     .people__name {
       .padding-inline(0);
-
-      // font-kerning: none;
     }
-    .people__commit-count {
-      // margin-top: 3px;
-      margin-top: 4px;
-    }
+    // .people__commit-count {
+    //   margin-top: 4px;
+    // }
   }
 }
 
@@ -61,7 +50,6 @@
 .people__emoji {
   position: absolute;
   z-index: 1;
-  // top: -21px;
   top: -22px;
   left: 50%;
   transform: translateX(-50%);
@@ -98,14 +86,11 @@
 .people__name {
   .padding-inline(10px);
   font-weight: 500;
-
-  // letter-spacing: -0.1px;
 }
 
 .people__commit-count {
   // margin-top: 4px;
   margin-top: 5px;
-  // color: @grey-light;
   color: @color-secondary;
 }
 

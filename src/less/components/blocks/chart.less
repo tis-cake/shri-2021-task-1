@@ -98,7 +98,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: auto;
-  margin-left: 1px;
+  // margin-left: 1px;
 
   text-align: center;
   color: @color-secondary;
@@ -137,16 +137,11 @@
     background-color: @color-secondary;
   }
 
-  &:last-child,
   &:first-child {
     &::before {
       content: none;
     }
   }
-
-  // .people__name {
-  //   letter-spacing: -0.1px;
-  // }
 }
 
 @media only screen and (min-width: @width-phone-middle) {
@@ -180,14 +175,14 @@
     }
   }
 
-  .chart__amount-commits,
-  .chart__sprint-number {
-    margin-left: 0;
-  }
+  // .chart__amount-commits,
+  // .chart__sprint-number {
+  //   margin-left: 0;
+  // }
 
-  .chart__amount-commits {
-    top: -29px;
-  }
+  // .chart__amount-commits {
+  //   top: -29px;
+  // }
 
   .chart__list-leaders {
     grid-template-columns: repeat(2, 1fr);
