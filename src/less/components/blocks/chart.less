@@ -98,6 +98,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: auto;
+  margin-left: 1px;
 
   text-align: center;
   color: @color-secondary;
@@ -107,16 +108,12 @@
 
 .chart__amount-commits {
   top: -30px;
-
-  margin-left: 1px;
 }
 
 .chart__sprint-number {
   bottom: -30px;
   color: @color-secondary;
   font-weight: 500;
-
-  margin-left: 1px;
 }
 
 .chart__list-leaders {
@@ -148,7 +145,7 @@
   }
 
   .people__name {
-    letter-spacing: -0.1px;
+    // letter-spacing: -0.1px;
     // letter-spacing: -0.2px;
   }
 }
@@ -182,6 +179,11 @@
     &:nth-last-child(2) {
       margin-left: 0;
     }
+  }
+
+  .chart__amount-commits,
+  .chart__sprint-number {
+    margin-left: 0;
   }
 
   .chart__list-leaders {
