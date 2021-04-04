@@ -3,15 +3,16 @@
   position: relative;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   flex-grow: 1;
   width: 100%;
+  height: 100%;
   // min-height: calc(100vh - var(--gap-container-block));
 }
 
 .leaders__text-wrap {
   box-sizing: border-box;
   position: absolute;
+  z-index: 1;
   top: 0;
   left: 0;
   width: 100%;
@@ -24,21 +25,21 @@
 
 .leaders__list {
   display: grid;
-  grid-template-columns: 96px 112px 96px;
+  grid-template-columns: 9.6rem 11.2rem 9.6rem;
   grid-template-areas: 'third first second';
 
   justify-content: center;
   align-items: stretch;
-  margin-top: 130px;
-  padding-top: 20px;
+  margin-top: 13rem;
+  padding-top: 2rem;
 }
 
 .leaders__item {
-  --stats-height-gap: 50px;
-  --gap-secondary: 16px;
+  --stats-height-gap: 5rem;
+  --gap-secondary: 1.6rem;
 
   position: relative;
-  width: 112px;
+  width: 11.2rem;
   margin-top: calc(var(--stats-height-gap) * var(--stats-coefficient));
 
   &:nth-of-type(1) {
@@ -66,10 +67,6 @@
     .people__commit-count {
       margin-left: var(--gap-secondary);
     }
-    // .people__name,
-    // .people__commit-count {
-    //   margin-left: calc(var(--gap-secondary) + 1px);
-    // }
   }
 
   &:nth-of-type(3),
@@ -80,10 +77,6 @@
     .people__commit-count {
       margin-right: var(--gap-secondary);
     }
-    // .people__name,
-    // .people__commit-count {
-    //   margin-right: calc(var(--gap-secondary) + 1px);
-    // }
   }
 
   &:nth-of-type(4),
@@ -117,10 +110,8 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  // margin-top: 16px;
-  margin-top: 15px;
-  padding-top: 18px;
-  // padding-top: 17px;
+  margin-top: 1.5rem;
+  padding-top: 1.8rem;
 
   background-image: @bg-stat-secondary;
   box-shadow: @shadow-stat-secondary;
@@ -131,18 +122,16 @@
   &--not-included {
     display: inline-block;
     position: relative;
-    // margin-top: 16px;
-    // margin-top: 15px;
-    margin-bottom: 2px;
+    margin-top: 1.5rem;
+    margin-bottom: 0.2rem;
     &::before {
       position: absolute;
       content: '';
-      // top: -6px;
-      top: -7px;
+      top: -0.7rem;
       left: 50%;
       transform: translateX(-50%);
-      width: 60px;
-      height: 1px;
+      width: 6rem;
+      height: 0.1rem;
       background-color: @color-tertiary;
     }
   }
@@ -154,37 +143,35 @@
 
 @media only screen and (min-width: @width-phone-middle) {
   .leaders__list {
-    grid-template-columns: 104px 120px 104px;
-    // margin-top: 150px;
-    margin-top: 151px;
-    padding-top: 30px;
+    grid-template-columns: 10.4rem 12rem 10.4rem;
+    margin-top: 15.1rem;
+    padding-top: 3rem;
   }
 
   .leaders__item {
-    width: 120px;
+    width: 12rem;
   }
 
   .leaders__stats-value {
     &--not-included {
-      // margin-bottom: 15px;
-      margin-bottom: 16px;
+      margin-bottom: 1.6rem;
     }
   }
 }
 
 @media only screen and (min-width: @width-tablet-small) {
   .leaders__list {
-    grid-template-columns: 104px 104px 120px 104px 104px;
+    grid-template-columns: 10.4rem 10.4rem 12rem 10.4rem 10.4rem;
     grid-template-areas: 'fifth third first second fourth';
-    margin-top: 90px;
+    margin-top: 9rem;
   }
 
   .leaders__stats {
-    margin-top: 16px;
+    margin-top: 1.6rem;
   }
 
   .leaders__item {
-    --stats-height-gap: 20px;
+    --stats-height-gap: 2rem;
 
     &:nth-of-type(3) {
       --stats-coefficient: 1;
@@ -195,22 +182,6 @@
       display: flex;
       --stats-coefficient: 2;
     }
-
-    // &:nth-of-type(2),
-    // &:nth-of-type(4) {
-    //   .people__name,
-    //   .people__commit-count {
-    //     margin-left: calc(var(--gap-secondary));
-    //   }
-    // }
-
-    // &:nth-of-type(3),
-    // &:nth-of-type(5) {
-    //   .people__name,
-    //   .people__commit-count {
-    //     margin-right: calc(var(--gap-secondary));
-    //   }
-    // }
   }
 
   .leaders__not-included-wrap,
@@ -221,6 +192,6 @@
 
 @media only screen and (min-width: @width-tablet-middle) {
   .leaders__list {
-    margin-top: 76px;
+    margin-top: 7.6rem;
   }
 }

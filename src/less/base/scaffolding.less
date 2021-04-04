@@ -1,15 +1,29 @@
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 html {
-  // height: 100%;
-  // background-image: @bg-main-gradient;
-  // background-repeat: no-repeat;
+  font-size: 62.5%;
+
+  // для корректного отображения на 5s, SE
+  &.leaders {
+    &,
+    body {
+      height: initial;
+      min-height: initial;
+    }
+    .leaders {
+      min-height: calc(100vh - var(--gap-container-block));
+    }
+  }
 }
 
 body {
-  // height: 100%;
-  margin: 0;
-  padding: 0;
+  width: 100%;
 
-  // font-family: @font-main;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -111,4 +125,53 @@ input[type="radio"].visually-hidden {
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
+}
+
+@media only screen and (min-width: @width-phone-middle) {
+  html.leaders {
+    &,
+    body {
+      height: 100%;
+    }
+    .leaders {
+      min-height: initial;
+    }
+  }
+}
+
+@media only screen and (min-width: @width-tablet-small) {
+  html.leaders {
+    &,
+    body {
+      height: initial;
+      min-height: initial;
+    }
+    .leaders {
+      min-height: calc(100vh - var(--gap-container-block));
+    }
+  }
+}
+
+@media only screen and (min-width: @width-tablet-middle) {
+  html.leaders {
+    &,
+    body {
+      height: 100%;
+    }
+    .leaders {
+      min-height: initial;
+    }
+  }
+}
+
+@media (min-width: @width-tablet-large) {
+  html {
+    font-size: 70.5%;
+  }
+}
+
+@media (min-width: @width-desktop-middle) {
+  html {
+    font-size: 74%;
+  }
 }

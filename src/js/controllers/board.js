@@ -12,6 +12,8 @@ let board = document.querySelector('.board');
 let renderedComponent = false;
 let renderedTemplate = false;
 
+const htmlEl = document.querySelector('html');
+
 const SlidesFunctionsTemplate = {
   activity: (data) => new Activity(data).getTemplate(),
   chart: (data) => new Chart(data).getTemplate(),
@@ -22,6 +24,11 @@ const SlidesFunctionsTemplate = {
 
 const renderTemplate = (alias, data) => {
   renderedTemplate = true;
+
+  htmlEl.classList.remove('leaders');
+  if (alias === 'leaders') {
+    htmlEl.classList.add('leaders');
+  }
 
   const templateFunction = SlidesFunctionsTemplate[alias];
   const templateMarkup = templateFunction(data);
